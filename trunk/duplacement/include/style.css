@@ -1,0 +1,229 @@
+
+body,td,th {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+body  {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+background-repeat: no-repeat;
+margin-left: 0px;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+font-size:11px;
+color:#666666;
+}
+
+/* Styles ------------------------------- */
+
+a:link {
+text-decoration: none;
+}
+a:visited {
+text-decoration: none;
+}
+a:hover {
+text-decoration: none;
+}
+a:active {
+text-decoration: none;
+}
+
+
+.mainbox {
+width:770px;
+overflow:hidden; 
+}
+
+.banner {
+width:770px; 
+height:130px;
+float:left;
+overflow:hidden;
+}
+
+.centerbox {
+float:left;
+width:770px;
+}
+
+.logo {
+width:250px; 
+height:30px; 
+margin-top:50px;
+float:left;
+}
+
+.right {
+width:320px; 
+height:115px;
+margin-bottom:10px;
+margin-top:10px; 
+float:right;
+}
+
+.header {
+float:left;
+width:720px;
+text-align:left;
+margin-left:25px;
+}
+
+.blue {
+color:#006699;
+}
+
+.form {
+color:#666666;
+width:170px;
+font-size:12px;
+}
+
+.formi {
+color:#666666;
+font-size:12px;
+}
+
+.formc {
+color:#666666;
+font-size:11px;
+font-weight:bold;
+}
+
+.linkA {
+color:#666666;
+}
+
+.linkA:hover {
+color:#666666;
+font-weight:bold;
+}
+
+.link {
+color:#666666;
+text-decoration:none;
+}
+
+.link:hover {
+color:#666666;
+font-weight:bold;
+}
+
+.linkz {
+color:#006699;
+text-decoration:none;
+}
+
+.linkz:hover {
+color:#FFFFFF;
+background-color:#006699;
+}
+
+.adminleft {
+width:170px;
+float:left;
+overflow:hidden;
+padding-top:20px;
+}
+
+.adminright {
+width:600px;
+float:left;
+overflow:hidden;
+padding-top:10px;
+}
+
+.blue {
+color:#006699;
+}
+
+.nav {
+width:150px;
+height:600px;
+padding-top:20px;
+padding-right:20px;
+float:left;
+overflow:hidden;
+
+}
+
+.navbar {
+margin-bottom:1px;
+height:30px;
+width:150px;
+background-image:url(../images/nav-cent-bar.jpg);
+float:left;
+overflow:hidden;
+}
+
+.navbarB {
+width:150px;
+float:left;
+overflow:hidden;
+}
+
+.navbardata {
+background-image:url(../images/nav-grad-bar.jpg);
+background-repeat:repeat-x;
+padding-left:10px;
+padding-right:10px;
+width:130px;
+height:550px;
+float:left;
+overflow:hidden;
+}
+
+.navmain {
+padding-bottom:1px;
+padding-top:20px;
+overflow:hidden;
+width:600px;
+float:left;
+}
+
+.navmainB {
+background-color:#e5f0f5;
+width:600px;
+float:left;
+overflow:hidden;
+}
+
+.navmainbar {
+padding-bottom:1px;
+height:30px;
+width:600px;
+background-image:url(../images/nav-cent-bar.jpg);
+float:left;
+}
+
+.navmaindata {
+background-color:#e5f0f5;
+padding-left:10px;
+padding-right:10px;
+width:580px;
+float:left;
+overflow:hidden;
+}
+
+.name {
+font-weight:bold;
+font-size:16px;
+color:#ff6600;
+}
+
+.namez {
+font-weight:bold;
+font-size:16px;
+color:#006699;
+}
+
+.names {
+font-weight:bold;
+font-size:12px;
+color:#006699;
+}
+
+.star {
+font-size:9px;
+color:#245f7d;
+}
