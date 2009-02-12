@@ -1,24 +1,22 @@
 <?php
+session_start();
 include('include/config.php');
 include('include/commonfunctions.php');
 
 if (isset($_POST['slogin'])) {
-	$user_class  =  trim($_POST['user_class']); 
-	$user_name   =  trim($_POST['user_name']); 
-	$user_pass   =  trim($_POST['user_pass']);
+	$st_username   	=  trim(stripslashes($_POST['st_username'])); 
+	$st_pass   		=  trim(stripslashes($_POST['st_pass']));
 
-	$chksql     =  "SELECT user_id, user_name, user_pass, user_class FROM dup_admin 
-								WHERE  user_name='$user_name' AND user_pass='$user_pass' AND user_class = '$user_class' limit 1";
+	$chksql     =  "SELECT * FROM dup_students
+								WHERE  st_username='$st_username' AND st_pass='$st_pass' limit 1";
 	$chkres  =  mysql_query($chksql);
-	$chknuum  =  mysql_num_rows($chkres);
-		
+	$chknuum  =  mysql_num_rows($chkres);		
 							  
 	if($chknuum > 0) {
 		$chkarray  =  mysql_fetch_array($chkres);
-		$_SESSION['adUser']  = $chkarray['user_name'];
-		$_SESSION['adminID'] = $chkarray['user_id'];
-		$_SESSION['adminClass'] = $chkarray['user_class'];
-		header('location:admin_home.php');
+		$_SESSION['stUser']  	= $chkarray['st_username'];
+		$_SESSION['stUserID'] 	= $chkarray['st_id'];		
+		header('location:studenthome.php');
 	} else {
 		$err = 'Login failed! Please use correct username and password!';
 	}
@@ -27,11 +25,11 @@ if (isset($_POST['slogin'])) {
 include('header.php');
 ?>
 
-	<div align="left" style="text-align:justify; float:left; height:476px;"><img src="images/du-login.jpg" /><br /><br /><br /><br /><br /><br /><br />
+	<div align="left" style="text-align:justify; float:left; height:476px;"><img src="images/du-login.jpg" /><br /><br /><br /><br /><br /><br /><p style="width:700px; text-align:center;"><?php echo $err; ?></p><br />
 	<table width="770" border="0" cellspacing="0" cellpadding="0">
       <tr>
 	  <td align="right" valign="top">
-	  <form name="slogin" action="" method="post">
+	  <form action="" method="post" name="frm1">
 	  <table width="350" border="0" cellspacing="0" cellpadding="0">
       <tr>
       <td width="105" height="25" align="left" valign="top"><img src="images/du-studs.jpg" alt="students sign in"  /></td>
@@ -69,7 +67,7 @@ include('header.php');
 	  </form>
       </td>
       <td align="left" valign="top">
-	  <form action="" name="clogin" method="post" name="frm2">
+	  <form action="" method="post" name="frm2">
 	  <table width="350" border="0" cellspacing="0" cellpadding="0">
       <tr>
       <td width="105" height="25" align="left" valign="top"><img src="images/du-client.jpg" alt="students sign in" /></td>
