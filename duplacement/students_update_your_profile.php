@@ -1,57 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>DU INTERNS :: Better way to get jobs!</title>
-
-<link href="include/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-<!--
-function MM_swapImgRestore() { //v3.0
-  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
-}
-function MM_preloadImages() { //v3.0
-  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
-    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
-    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+<?php
+session_start();
+include('include/config.php');
+include('include/commonfunctions.php');
+if (empty($_SESSION['stUser'])) {
+  	header('location:signin.php');	
 }
 
-function MM_findObj(n, d) { //v4.01
-  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
-    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
-  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
-  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
-  if(!x && d.getElementById) x=d.getElementById(n); return x;
-}
-
-function MM_swapImage() { //v3.0
-  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
-   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
-}
-//-->
-</script>
-</head>
-  <body onload="MM_preloadImages('/images/du-contact_us.jpg','images/btn-home-img-hover.jpg','images/btn-findjobs-img-hover.jpg','images/btn-aboutus-img-hover.jpg','images/btn-students-img-hover.jpg','images/btn-employers-img-hover.jpg','images/btn-signin-img-hover.jpg')">
-    <center>
-  
-    <div class="mainbox">
-    <div class="banner">
-	  <div class="logo"><a href="index.html"><img src="images/du-logo.jpg" alt="du placements" border="0" /></a></div>
-		<div class="right"> <img src="images/du-contactus.jpg" alt="contact us" border="0" usemap="#Map" />
-        <map name="Map" id="Map2">
-        <area shape="rect" coords="10,102,40,115" href="index.html" alt="home" />
-        <area shape="rect" coords="51,102,97,115" href="find_jobs.html" alt="findjobs" />
-        <area shape="rect" coords="107,102,170,128" href="how_it_works.html" alt="aboutus" />
-        <area shape="rect" coords="181,102,225,123" href="students.html" alt="students" />
-        <area shape="rect" coords="235,100,267,119" href="clients.html" alt="employers" />
-        <area shape="rect" coords="158,4,237,44" href="ask_me.html" alt="contactus"/>
-        <area shape="rect" coords="237,4,298,88" href="ask_me.html" alt="contactus" />
-        <area shape="rect" coords="219,87,317,99" href="ask_me.html" alt="contactus" />
-        <area shape="rect" coords="278,102,313,115" href="signin.html" alt="signin"/>
-        </map>
-	    </div>
-      </div>
-
+include('studentheader.php');
+?>
   	<div style="width:770px; float:left;" align="left">
 	 	<div class="nav">
         <div class="navbar"> 
@@ -59,18 +15,7 @@ function MM_swapImage() { //v3.0
           <img src="images/nav-img-studs.jpg" alt="" style="float:left; padding-left:4px; padding-top:8px;"/> 
           <img src="images/nav-right-bar.jpg" alt="rightbar" style="float:right;" /></div>
           <div class="navbarB">
-          <div class="navbardata">
-          <br /><a href="students_login_home.html" class="link">Home</a><br />
-          <br /><a href="students_edit_profile.html" class="link">Edit Profile</a><br />
-          <br /><a href="students_personal_profile.html" class="link">Personal Profile</a><br />
-          <br /><a href="students_update_your_profile.html" class="link">Update your profile</a><br />
-          <br /><a href="students_resume_summary.html" class="link">Resume Summary</a><br />
-		  <br /><a href="students_status.html" class="link">Subscription details</a><br />
-          <br /><a href="students_changepass.html" class="link">Change Password</a><br />
-          <br />:::::::::::::::::::::::<br />
-          <br />
-          <br />Login: Dheeraj </div>
-          </div>
+          <?php include("studentmenu.php"); ?>
           </div>
       <div class="navmain">
    	  <div class="navmainbar">
@@ -180,9 +125,4 @@ Accruals | Advertising | Asset | Bad Debts | Balance Sheet | Bank & Cash | Bank 
 	  </div>
       </div>
 	  </div> 	  
-  	<div style="width:770px; padding-top:30px; float:left;"><br /><br /><img src="images/nav-z-bar.jpg" alt="divider"/>
-    <br /><br />wrkondreamz.studio .....:: Best viewed in 1024x768 Resolution ::.....</div>
-    </div>
-    </center>
-  </body>
-</html>
+  	<?php include('footer.php');?>

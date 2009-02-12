@@ -17,18 +17,7 @@ include('studentheader.php');
           </div>
           
           <div class="navbarB">
-          <div class="navbardata">
-          <br /><a href="students_login_home.html" class="link">Home</a><br />
-          <br /><a href="students_edit_profile.html" class="link">Edit Profile</a><br />
-          <br /><a href="students_personal_profile.html" class="link">Personal Profile</a><br />
-          <br /><a href="students_update_your_profile.html" class="link">Update your profile</a><br />
-          <br /><a href="students_resume_summary.html" class="link">Resume Summary</a><br />
-		  <br /><a href="students_status.html" class="link">Subscription details</a><br />
-          <br /><a href="students_changepass.html" class="link">Change Password</a><br />
-          <br />:::::::::::::::::::::::<br />
-          <br />
-          <br />Login: Dheeraj </div>
-          </div>
+          <?php include("studentmenu.php"); ?>
           </div>
 
           <div class="navmain">
@@ -39,18 +28,18 @@ include('studentheader.php');
             <div class="blue" style="height:30px; background-image:url(images/nav-bar-table1.jpg); padding-left:10px; padding-right:10px; width:580px; float:left;"></div>
             <div style="background-image:url(images/nav-grads-bar.jpg); background-repeat:repeat-x;  background-repeat:repeat-x; 
             padding-left:15px; padding-bottom:5px; padding-right:10px; padding-top:10px; width:575px; float:left;">
-            
+            <form name="frm1" action="" method="post" enctype="multipart/form-data">
             <table width="560" border="0" cellspacing="0" cellpadding="0">
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Key Skills</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_keyskills" type="text" class="form" id="st_keyskills" size="27" />            </td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Resume Headline</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="password" type="text" class="form" id="pass" size="27" /></td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_resumeheadline" type="text" class="form" id="st_resumeheadline" size="27" /></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
@@ -309,7 +298,7 @@ include('studentheader.php');
               <tr>
               <td width="150" height="25" align="left" valign="top">Copy or paste resume</td>
               <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><textarea name="description" cols="21" rows="5" class="form" id="description"></textarea></td>
+              <td width="0" height="25" align="left" valign="top"><textarea name="st_textresume" cols="21" rows="5" class="form" id="description"></textarea></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
               <tr>
@@ -325,6 +314,7 @@ include('studentheader.php');
               <td width="70" align="right" valign="top"></td>
               </tr>
               </table>
+			  </form>
               <br />
               <br />
               <br />
