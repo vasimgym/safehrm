@@ -15,18 +15,7 @@ include('studentheader.php');
           <img src="images/nav-img-studs.jpg" alt="" style="float:left; padding-left:4px; padding-top:8px;"/> 
           <img src="images/nav-right-bar.jpg" alt="rightbar" style="float:right;" /></div>
           <div class="navbarB">
-          <div class="navbardata">
-          <br /><a href="studenthome.php" class="link">Home</a><br />
-          <br /><a href="students_edit_profile.php" class="link">Edit Profile</a><br />
-          <br /><a href="students_personal_profile.php" class="link">Personal Profile</a><br />
-          <br /><a href="students_update_your_profile.php" class="link">Update your profile</a><br />
-          <br /><a href="students_resume_summary.php" class="link">Resume Summary</a><br />
-		  <br /><a href="students_status.php" class="link">Subscription details</a><br />
-          <br /><a href="students_changepass.php" class="link">Change Password</a><br />
-          <br />:::::::::::::::::::::::<br />
-          <br />
-          <br />Login: Dheeraj </div>
-          </div>
+          <?php include("studentmenu.php"); ?>
           </div>
 	<div class="navmain">
    	<div class="navmainbar">
