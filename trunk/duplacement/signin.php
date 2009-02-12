@@ -6,11 +6,10 @@ include('include/commonfunctions.php');
 if (isset($_POST['slogin'])) {
 	$st_username   	=  trim(stripslashes($_POST['st_username'])); 
 	$st_pass   		=  trim(stripslashes($_POST['st_pass']));
-
-	$chksql     =  "SELECT * FROM dup_students
+	$chksql     	=  "SELECT * FROM dup_students
 								WHERE  st_username='$st_username' AND st_pass='$st_pass' limit 1";
-	$chkres  =  mysql_query($chksql);
-	$chknuum  =  mysql_num_rows($chkres);		
+	$chkres  		=  mysql_query($chksql);
+	$chknuum  		=  mysql_num_rows($chkres);		
 							  
 	if($chknuum > 0) {
 		$chkarray  =  mysql_fetch_array($chkres);
@@ -18,14 +17,34 @@ if (isset($_POST['slogin'])) {
 		$_SESSION['stUserID'] 	= $chkarray['st_id'];		
 		header('location:studenthome.php');
 	} else {
-		$err = 'Login failed! Please use correct username and password!';
+		triggerMessage("err_student", "Error: Login failed! Please use correct username and password!");		
 	}
 }
+
+
+if (isset($_POST['clogin'])) {
+	$st_username   	=  trim(stripslashes($_POST['st_username'])); 
+	$st_pass   		=  trim(stripslashes($_POST['st_pass']));
+	$chksql     	=  "SELECT * FROM dup_students
+								WHERE  st_username='$st_username' AND st_pass='$st_pass' limit 1";
+	$chkres  		=  mysql_query($chksql);
+	$chknuum  		=  mysql_num_rows($chkres);		
+							  
+	if($chknuum > 0) {
+		$chkarray  =  mysql_fetch_array($chkres);
+		$_SESSION['stUser']  	= $chkarray['st_username'];
+		$_SESSION['stUserID'] 	= $chkarray['st_id'];		
+		header('location:studenthome.php');
+	} else {
+		triggerMessage("err_student", "Error: Login failed! Please use correct username and password!");		
+	}
+}
+
 
 include('header.php');
 ?>
 
-	<div align="left" style="text-align:justify; float:left; height:476px;"><img src="images/du-login.jpg" /><br /><br /><br /><br /><br /><br /><p style="width:700px; text-align:center;"><?php echo $err; ?></p><br />
+	<div align="left" style="text-align:justify; float:left; height:476px;"><img src="images/du-login.jpg" /><br /><br /><br /><br /><br /><br /><p style="width:700px; text-align:center;"><?php outputTrigger('err_student'); ?></p><br />
 	<table width="770" border="0" cellspacing="0" cellpadding="0">
       <tr>
 	  <td align="right" valign="top">
