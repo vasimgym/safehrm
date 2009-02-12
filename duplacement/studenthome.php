@@ -6,7 +6,7 @@ if (empty($_SESSION['stUser'])) {
   	header('location:signin.php');	
 }
 
-include('header.php');
+include('studentheader.php');
 ?>
 	<div align="left" style="text-align:justify; float:left; overflow:hidden;">
 		<div class="nav">
@@ -16,13 +16,13 @@ include('header.php');
           <img src="images/nav-right-bar.jpg" alt="rightbar" style="float:right;" /></div>
           <div class="navbarB">
           <div class="navbardata">
-          <br /><a href="students_login_home.html" class="link">Home</a><br />
-          <br /><a href="students_edit_profile.html" class="link">Edit Profile</a><br />
-          <br /><a href="students_personal_profile.html" class="link">Personal Profile</a><br />
-          <br /><a href="students_update_your_profile.html" class="link">Update your profile</a><br />
-          <br /><a href="students_resume_summary.html" class="link">Resume Summary</a><br />
-		  <br /><a href="students_status.html" class="link">Subscription details</a><br />
-          <br /><a href="students_changepass.html" class="link">Change Password</a><br />
+          <br /><a href="studenthome.php" class="link">Home</a><br />
+          <br /><a href="students_edit_profile.php" class="link">Edit Profile</a><br />
+          <br /><a href="students_personal_profile.php" class="link">Personal Profile</a><br />
+          <br /><a href="students_update_your_profile.php" class="link">Update your profile</a><br />
+          <br /><a href="students_resume_summary.php" class="link">Resume Summary</a><br />
+		  <br /><a href="students_status.php" class="link">Subscription details</a><br />
+          <br /><a href="students_changepass.php" class="link">Change Password</a><br />
           <br />:::::::::::::::::::::::<br />
           <br />
           <br />Login: Dheeraj </div>
@@ -143,9 +143,9 @@ include('header.php');
 
 	  <div class="navmaindata">
       <div style="width:340px; height:100px; float:left;"><br />
-      <a href="students_edit_profile.html" class="link">Resume Headline</a><br /><br />
-      <a href="students_update_your_profile.html" class="link">I didn't upload my photograph.</a><br /><br />
-   	  <a href="clients_manage_response.html" class="link">Last Updated CV: 12-Dec-2008</a><br />
+      <a href="students_edit_profile.php" class="link">Resume Headline</a><br /><br />
+      <a href="students_update_your_profile.php" class="link">I didn't upload my photograph.</a><br /><br />
+   	  <a href="clients_manage_response.php" class="link">Last Updated CV: 12-Dec-2008</a><br />
       </div>
 
       <div style="width:200px; height:100px; float:left;"><br />
