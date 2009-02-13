@@ -24,13 +24,13 @@
 
    	  <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD INDUSTRY</strong></span><br />
 
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>    </div>
+      <a href="add_industry.php" class="linkA">Create or manage, admin<br />and user panel.</a>    </div>
    	
 	<div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
 
    	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE INDUSTRY</strong></span><br />
       
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
+      <a href="manage_industry.php" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
       
     </div>
 
@@ -42,13 +42,13 @@
    	  
       <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD FUNCTION	</strong></span><br />
       
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
+      <a href="add_function.php" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
 
 	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
 
    	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE FUNCTION</strong></span><br />
       
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
+      <a href="manage_function.php" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
 
 	</div>
 
@@ -60,7 +60,7 @@
    	  
       <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD LOCATION</strong></span><br />
       
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>
+      <a href="add_location.php" class="linkA">Create or manage, admin<br />and user panel.</a>
 
     </div>
 
@@ -68,7 +68,7 @@
 
    	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE LOCATION</strong></span><br />
       
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>
+      <a href="manage_location.php" class="linkA">Create or manage, admin<br />and user panel.</a>
 
     </div>
 
@@ -82,13 +82,13 @@
 
    	  <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD LOCATION (dir)</strong></span><br />
 
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
+      <a href="add_location_dir.php" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
 
 	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
 
    	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE LOCATION (dir)</strong></span><br />
 
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>    </div>
+      <a href="manage_location_dir.php" class="linkA">Create or manage, admin<br />and user panel.</a>    </div>
 
 	</div>
 
@@ -100,13 +100,13 @@
 
    	  <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD PRODUCT</strong></span><br />
 
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>    </div>
+      <a href="add_product.php" class="linkA">Create or manage, admin<br />and user panel.</a>    </div>
       
 	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
    	  
       <div class="linkA" style="width:200px; height:55px; float:left;">	     <span class="blue"><strong>MANAGE PRODUCT</strong></span><br />
       
-      <a href="#" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
+      <a href="manage_product.php" class="linkA">Create or manage, admin<br />and user panel.</a>	</div>
 
 	</div>
 
