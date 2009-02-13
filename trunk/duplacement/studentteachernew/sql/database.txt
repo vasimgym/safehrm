@@ -1,0 +1,270 @@
+-- phpMyAdmin SQL Dump
+-- version 2.9.2
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Apr 26, 2008 at 04:27 AM
+-- Server version: 5.0.27
+-- PHP Version: 5.2.1
+-- 
+-- Database: `student_teacher`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_category`
+-- 
+
+CREATE TABLE `student_category` (
+  `id` int(11) NOT NULL auto_increment,
+  `categoryname` varchar(60) NOT NULL,
+  `parent_node` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+-- 
+-- Dumping data for table `student_category`
+-- 
+
+INSERT INTO `student_category` (`id`, `categoryname`, `parent_node`) VALUES 
+(7, 'MBA', 0),
+(9, 'EMBA', 0),
+(11, '23a', 9),
+(12, 'Accounts', 7),
+(13, 'Finance Accounts', 7),
+(14, 'IT', 7),
+(15, 'Intl Business', 7),
+(16, 'QMS', 9),
+(17, 'MCA', 0),
+(18, 'Software Testing', 17);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_city`
+-- 
+
+CREATE TABLE `student_city` (
+  `id` int(11) NOT NULL auto_increment,
+  `stateid` int(11) NOT NULL,
+  `city_name` varchar(60) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Dumping data for table `student_city`
+-- 
+
+INSERT INTO `student_city` (`id`, `stateid`, `city_name`) VALUES 
+(1, 2, 'new delhi');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_course`
+-- 
+
+CREATE TABLE `student_course` (
+  `courseid` int(11) NOT NULL auto_increment,
+  `coursename` varchar(60) NOT NULL,
+  `parentid` int(11) NOT NULL,
+  PRIMARY KEY  (`courseid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+-- 
+-- Dumping data for table `student_course`
+-- 
+
+INSERT INTO `student_course` (`courseid`, `coursename`, `parentid`) VALUES 
+(1, 'MBA', 0),
+(3, 'MCA', 0),
+(4, 'IT', 3),
+(5, 'BCA', 0),
+(6, 'C++', 5),
+(7, 'JAVA', 5),
+(8, 'VB6.0', 5),
+(9, 'BUSINESS', 1),
+(10, 'FINANCE', 1),
+(11, 'EXPORT IMPORT', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_information`
+-- 
+
+CREATE TABLE `student_information` (
+  `s_id` int(11) NOT NULL auto_increment,
+  `s_firstname` varchar(60) NOT NULL,
+  `s_email` varchar(60) NOT NULL,
+  `s_lastname` varchar(60) NOT NULL,
+  `s_category` int(11) NOT NULL,
+  `s_status` varchar(30) NOT NULL default 'PENDING',
+  `s_city` varchar(60) NOT NULL,
+  `s_state` int(11) NOT NULL,
+  `s_subject` varchar(11) NOT NULL,
+  `s_filepath` varchar(60) NOT NULL,
+  `s_teacher_commets` text NOT NULL,
+  `s_posted_date` date NOT NULL,
+  `s_subcategory` varchar(60) NOT NULL,
+  PRIMARY KEY  (`s_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+
+-- 
+-- Dumping data for table `student_information`
+-- 
+
+INSERT INTO `student_information` (`s_id`, `s_firstname`, `s_email`, `s_lastname`, `s_category`, `s_status`, `s_city`, `s_state`, `s_subject`, `s_filepath`, `s_teacher_commets`, `s_posted_date`, `s_subcategory`) VALUES 
+(14, 'ANSHU', 'ABA@LITTLE.COM', 'anand', 7, 'INCOMPLETE', 'DINGHARA', 2, '2,3', 'ABA@LITTLE.COM.doc', '', '2008-04-03', '12,14,15'),
+(15, 'pandey', 'pankaj@pandey.com', 'Pankaj', 7, 'PENDING', 'Gopalganj', 2, '2,3', 'pankaj@pandey.com.doc', '', '2008-04-07', '13,15'),
+(16, 'kumar', 'raj@gmail.com', 'pandey', 9, 'EXPIRED', 'hazipur', 2, '2,3', 'raj@gmail.com.doc', '', '2008-04-07', '11,16'),
+(17, 'roop', 'roop@anoop.com', 'anoop', 9, 'EXPIRED', 'city', 2, '2,3', 'roop@anoop.com.doc', '', '2008-04-07', '11'),
+(18, 'da', 'abc132@sdf.com', 'la', 9, 'PENDING', 'asd', 2, '2,3', 'abc132@sdf.com.txt', 'hg hfghfh', '2008-04-07', '11'),
+(19, 'ANAND', 'abc@groups.com', 'KUMAR', 7, 'EXPIRED', 'HAJIPUR', 2, '2', 'abc@groups.com.doc', '', '2008-04-08', '12,13'),
+(20, 'anand', 'test@anand.com', 'kumar', 7, 'PENDING', 'anand', 2, '2,3', 'test@anand.com.doc', '', '2008-04-10', '15'),
+(21, 'little', 'little@master.com', 'master', 7, 'PENDING', 'com', 2, '2,3', 'little@master.com.doc', '', '2008-04-10', '12,13,14,15'),
+(22, 'org', 'test@anand.org', 'org', 9, 'PENDING', 'anand', 2, '2', 'test@anand.org.doc', '', '2008-04-10', '11'),
+(23, 'abc', 'littleabc@master.com', 'abc', 7, 'INCOMPLETE', 'abc', 2, '2', 'littleabc@master.com.doc', '', '2008-04-10', '14,15'),
+(25, 'Admin', 'admin@admin.com', 'istration', 9, 'PENDING', 'new delhi', 2, '2,3', 'admin@admin.com.doc', '', '2008-04-21', '11,16');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_state`
+-- 
+
+CREATE TABLE `student_state` (
+  `id` int(11) NOT NULL auto_increment,
+  `state_name` varchar(60) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `student_state`
+-- 
+
+INSERT INTO `student_state` (`id`, `state_name`) VALUES 
+(2, 'Delhi');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_status`
+-- 
+
+CREATE TABLE `student_status` (
+  `id` int(11) NOT NULL auto_increment,
+  `status_name` varchar(60) NOT NULL,
+  `status_color` varchar(15) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `student_status`
+-- 
+
+INSERT INTO `student_status` (`id`, `status_name`, `status_color`) VALUES 
+(1, 'CHECKED', '#FF0000'),
+(2, 'PENDING', '#FF00FF'),
+(3, 'INCOMPLETE', '#FF0000'),
+(4, 'REVIEWING', '#00FF00');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `student_subject`
+-- 
+
+CREATE TABLE `student_subject` (
+  `id` int(11) NOT NULL auto_increment,
+  `subject_name` varchar(60) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- 
+-- Dumping data for table `student_subject`
+-- 
+
+INSERT INTO `student_subject` (`id`, `subject_name`) VALUES 
+(2, 'subject1'),
+(3, 'Physics');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `teacher_comments`
+-- 
+
+CREATE TABLE `teacher_comments` (
+  `com_id` int(11) NOT NULL auto_increment,
+  `com_title` varchar(60) NOT NULL,
+  `com_description` text NOT NULL,
+  `com_status` varchar(10) NOT NULL default 'Inactive',
+  `com_date` datetime NOT NULL,
+  `com_update` datetime NOT NULL,
+  `categoryid` int(11) NOT NULL,
+  `subcategoryid` varchar(60) NOT NULL,
+  PRIMARY KEY  (`com_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+-- 
+-- Dumping data for table `teacher_comments`
+-- 
+
+INSERT INTO `teacher_comments` (`com_id`, `com_title`, `com_description`, `com_status`, `com_date`, `com_update`, `categoryid`, `subcategoryid`) VALUES 
+(3, 'Assignments of Management Information Syestems', 'Assignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information SyestemsAssignments of Management Information Syestems', 'EXPIRED', '2008-01-09 15:45:59', '2008-04-10 15:12:49', 7, '14,15'),
+(4, 'Computer Organizations', 'Computer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer OrganizationsComputer Organizations', 'EXPIRED', '2008-01-09 15:48:49', '2008-04-08 11:35:01', 9, '11,16'),
+(6, 'Portfilio Managements.', 'Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.Portfilio Managements.', 'EXPIRED', '2008-01-09 15:49:38', '2008-04-19 12:55:17', 7, '13,14'),
+(7, 'Entity Relationship Diagrams', 'Entity-relationship diagrams don''t show single entities or single instances of ... CA ERwin Data Modeler: ERD tool, ability to generate HTML reports. ...', 'EXPIRED', '2008-01-09 16:55:34', '2008-04-16 14:12:28', 9, '11,16'),
+(8, 'Php Cakes', 'cake php code for linking document file, Google, Page 1 .... Cake views are just HTML and PHP flavored fragments that fit inside an application''s layout. ...', 'EXPIRED', '2008-01-09 16:55:48', '2008-04-15 16:05:40', 9, '16'),
+(9, 'check123', 'Testing \r\nTesting \r\nTesting \r\nTesting \r\nTesting \r\nTesting', 'EXPIRED', '2008-04-07 12:23:53', '2008-04-10 12:49:08', 9, '11'),
+(10, 'check', 'testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing', 'EXPIRED', '2008-04-07 12:27:18', '2008-04-19 12:38:09', 7, '13,14'),
+(11, 'wewrwr', 'werwer we wer', 'EXPIRED', '2008-04-07 21:49:24', '2008-04-15 15:59:22', 9, '16'),
+(12, 'cheing ...', 'cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...cheing ...', 'EXPIRED', '2008-04-16 14:13:06', '2008-04-19 12:31:16', 9, '11,16');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `teacher_information`
+-- 
+
+CREATE TABLE `teacher_information` (
+  `id` int(11) NOT NULL auto_increment,
+  `first_name` varchar(60) NOT NULL,
+  `last_name` varchar(60) NOT NULL,
+  `emailid` varchar(60) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `assignmentperiod` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `teacher_information`
+-- 
+
+INSERT INTO `teacher_information` (`id`, `first_name`, `last_name`, `emailid`, `password`, `assignmentperiod`) VALUES 
+(1, 'branjan', 'routaray', 'branjan@test.com', 'branjan', 5),
+(2, 'anand', 'kumar', 'anand@test.com', 'kumar', 5);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `teacher_mailbody`
+-- 
+
+CREATE TABLE `teacher_mailbody` (
+  `mailid` int(11) NOT NULL auto_increment,
+  `mail_sendto` varchar(60) NOT NULL,
+  `mail_txt` text NOT NULL,
+  `mail_status` varchar(10) NOT NULL,
+  PRIMARY KEY  (`mailid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `teacher_mailbody`
+-- 
+
+INSERT INTO `teacher_mailbody` (`mailid`, `mail_sendto`, `mail_txt`, `mail_status`) VALUES 
+(1, 'Student', 'Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student Student', 'Enable'),
+(2, 'Teacher', 'Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher Teacher', 'Enable');
