@@ -5,6 +5,8 @@
 <title>DU INTERNS :: Better way to get jobs!</title>
 <link href="include/style.css" rel="stylesheet" type="text/css" />
 <script src="script/function.js" type="text/javascript"></script>
+<script src="jquery/lib/jquery.js" type="text/javascript"></script>
+<script src="jquery/jquery.validate.js" type="text/javascript"></script>
 </head>
   <body>
     <center>
