@@ -1,0 +1,232 @@
+
+.admin-w {
+font-family:Verdana;
+font-size: 11px;
+color:#ffffff;
+font-weight:bold;
+text-decoration:none;
+}
+
+
+.admin-gray {
+font-family:Verdana;
+font-size: 11px;
+color:#797777;
+text-decoration:none;
+}
+
+.search {
+font-family:Verdana;
+font-size: 10px;
+color:#000000;
+font-weight:bold;
+text-decoration:none;
+}
+.categories a:link{
+font-family:Verdana;
+font-size: 10px;
+color:#000000;
+font-weight:bold;
+text-decoration:none;
+}
+.categories a:visited{
+font-family:Verdana;
+font-size: 10px;
+color:#000000;
+font-weight:bold;
+text-decoration:none;
+}
+.categories a:hover{
+font-family:Verdana;
+font-size: 10px;
+color:#000000;
+font-weight:bold;
+text-decoration:underline
+}
+
+.search1 {
+font-family:Verdana;
+font-size: 8px;
+color:#000000;
+text-decoration:none;
+}
+
+
+.left-heading {
+font-family:Verdana;
+font-size: 11px;
+color:#000000;
+font-weight:bold;
+text-decoration:none;
+}
+
+.w-text {
+font-family:Verdana;
+font-size: 14px;
+color:#ffffff;
+font-weight:bold;
+text-decoration:none;
+padding-left: 10px;
+}
+
+.orange-large {
+font-family:arial;
+font-size: 20px;
+color:#FF8004;
+font-weight:bold;
+text-decoration:none;
+padding-left: 20px;
+}
+
+.gray-login {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+padding-left: 20px;
+}
+.gray-left {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+}
+
+.blue-large {
+font-family:arial;
+font-size: 20px;
+color:#068FD5;
+font-weight:bold;
+text-decoration:none;
+}
+
+.orange {
+font-family:Verdana;
+font-size: 14px;
+color:#FF6804;
+font-weight:bold;
+text-decoration:none;
+}
+
+.blue {
+font-family:Verdana;
+font-size: 11px;
+color:#1568A8;
+font-weight:bold;
+text-decoration:none;
+}
+
+.blue1 {
+font-family:Verdana;
+font-size: 10px;
+color:#3961F6;
+text-decoration:underline;
+}
+
+.left-none {
+font-family:Verdana;
+font-size: 11px;
+color:#000000;
+text-decoration:none;
+}
+
+
+.border1 {
+border-right: 1px solid #96999B; 
+}
+
+
+.border2 {
+border-left: 1px solid #96999B; 
+}
+
+.border-gray {
+border-left: 1px solid #B1B1B1;
+border-right: 1px solid #B1B1B1;
+border-bottom: 1px solid #B1B1B1; 
+}
+
+.space_top {
+font-family:Arial;
+font-size: 6px;
+color:#E8A616
+text-decoration:none;
+}
+.text-gray {
+font-family:Verdana;
+font-size: 13px;
+color:#797777;
+text-decoration:none;
+}
+.text{
+font-family:Verdana;
+font-size: 13px;
+color:#00000;
+text-decoration:none;
+}
+.errormsg {
+	font-family:Verdana;
+	font-size:12px;
+	color:#ff0000;
+}
+
+.status-green {
+font-family:Verdana;
+font-size: 11px;
+color:#009900;
+text-decoration:none;
+}
+
+.status-red {
+font-family:Verdana;
+font-size: 11px;
+color:#FF0000;
+text-decoration:none;
+}
+
+
+.gray-subcateogry {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+padding-left:12px;
+}
+
+.display-subcateogry {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+padding-left:33px;
+}
+.display-subcateogrymain {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+padding-left:133px;
+}
+
+.gray-rightlogin {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+}
+	
+.search-subcateogrymain {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+padding-left:120px;
+}
+
+.searchleft-subcateogrymain {
+font-family:Verdana;
+font-size: 12px;
+color:#4E4F4F;
+text-decoration:none;
+padding-left:15px;
+}
