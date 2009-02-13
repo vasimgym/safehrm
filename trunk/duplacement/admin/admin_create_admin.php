@@ -56,6 +56,56 @@ if ($_GET['act'] == "edit")
 
 
 <?php include("header.php");?>
+<script type="text/javascript">
+$.validator.setDefaults({
+	submitHandler: function() { this.submit(); }
+});
+
+$().ready(function() {
+	
+	
+	// validate signup form on keyup and submit
+	$("#signupForm").validate({
+		rules: {
+			user_name: {
+				required: true,
+				minlength: 2
+			},
+			user_pass: {
+				required: true,
+				minlength: 5
+			},
+			
+			user_email: {
+				required: true,
+				email: true
+			}	
+		},
+		messages: {
+			user_name: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			
+			user_pass: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			user_email: "enter a valid email address"
+		}
+	});
+		
+});
+</script>
+
+<style type="text/css">
+#signupForm .error {
+	width: auto;
+	display:block;
+	color:#FF0000;
+}
+
+</style>
 
 	
 	<div style="width:770px; float:left;">
@@ -67,7 +117,7 @@ if ($_GET['act'] == "edit")
     <div style="width:600px; padding-top:5px;">
     
     <div style="width:600px; float:left;">
-    <form name="frm" action="" method="post">
+    <form id="signupForm" action="" method="post" >
     <table width="330" border="0" cellspacing="0" cellpadding="0">
     <tr>
     <td align="left" valign="top"><strong><img src="../images/admin-star.jpg" alt="star" /></strong></td>
@@ -93,7 +143,7 @@ if ($_GET['act'] == "edit")
     <td width="30" align="left" valign="top"></td>
     <td width="110" height="25" align="left" valign="top">Password</td>
     <td width="20" height="25" align="left" valign="top">:</td>
-    <td width="170" height="25" align="left" valign="top"><input name="user_pass" type="password" class="form" id="pass" size="27" value="<?php echo $eresult['user_pass']; ?>"/></td>
+    <td width="170" height="25" align="left" valign="top"><input name="user_pass" type="password" class="form" id="user_pass" size="27" value="<?php echo $eresult['user_pass']; ?>"/></td>
     </tr>
     <tr>
     <td width="30" align="left" valign="top"></td>
@@ -105,7 +155,7 @@ if ($_GET['act'] == "edit")
     <td width="30" align="left" valign="top"></td>
     <td width="110" height="25" align="left" valign="top">Email Id</td>
     <td width="20" height="25" align="left" valign="top">:</td>
-    <td width="170" height="25" align="left" valign="top"><input name="user_email" type="text" class="form" id="email" size="27" value="<?php echo $eresult['user_email']; ?>"/></td>
+    <td width="170" height="25" align="left" valign="top"><input name="user_email" type="text" class="form" id="user_email" size="27" value="<?php echo $eresult['user_email']; ?>"/></td>
     </tr>
 	
 	<tr>
@@ -146,7 +196,8 @@ if ($_GET['act'] == "edit")
 	<?php } else { ?>
 		<input type="hidden" name="add" value="1" />
 	<?php } ?>
-	<input type="image" src="../images/du-btn-submit.jpg" name="submit1" id="submit1" value="Submit1"  onclick="document.frm.submit();"/>
+	<!--<input type="submit" name="submit" value="submit" /> -->
+	<input type="image" src="../images/du-btn-submit.jpg" name="submit1" id="submit1" value="Submit1" />
 	</td>
     </tr>
     </table>

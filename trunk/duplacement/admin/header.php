@@ -6,6 +6,8 @@
 
 <link href="include/style.css" rel="stylesheet" type="text/css" />
 <link href="../include/style.css" rel="stylesheet" type="text/css" />
+<script src="../jquery/lib/jquery.js" type="text/javascript"></script>
+<script src="../jquery/jquery.validate.js" type="text/javascript"></script>
 </head>
 
 <body>
