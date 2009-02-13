@@ -17,4 +17,4 @@
       <div class="banner">
         <div class="logo"><a href="../index.html"><img src="../images/du-logo.jpg" alt="du placements" border="0" /></a></div>
         <div class="right"><img src="../images/du-contact-us.jpg" alt="contact us" border="0" /></div>
-      </div>
+     </div>
