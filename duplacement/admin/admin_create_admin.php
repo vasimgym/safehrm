@@ -65,18 +65,34 @@ $().ready(function() {
 	
 	
 	// validate signup form on keyup and submit
+	// validate signup form on keyup and submit
 	$("#signupForm").validate({
 		rules: {
 			user_name: {
 				required: true,
 				minlength: 2
-			}	
+			},
+			user_pass: {
+				required: true,
+				minlength: 5
+			},
+			
+			user_email: {
+				required: true,
+				email: true
+			}			
 		},
 		messages: {
 			user_name: {
 				required: "Please enter a username",
 				minlength: "Your username must consist of at least 2 characters"
-			}
+			},
+			user_pass: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			user_email: "Please enter a valid email address"
+			
 		}
 	});
 		
