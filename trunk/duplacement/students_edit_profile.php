@@ -16,22 +16,13 @@ $.validator.setDefaults({
 		alert("submitted!");
 	}
 });
-$.validator.messages.max = jQuery.format("Your totals musn't exceed {0}!");
 
-$.validator.addMethod("quantity", function(value, element) {
-	return !this.optional(element) && !this.optional($(element).parent().prev().children("select")[0]);
-}, "Please select both the item and its amount.");
+
 
 $().ready(function() {
-	$("#orderform").validate({
-		errorPlacement: function(error, element) {
-			error.appendTo( element.parent().next() );
-		},
-		highlight: function(element, errorClass) {
-			$(element).addClass(errorClass).parent().prev().children("select").addClass(errorClass);
-		}
-	});
-	
+// validate the comment form when it is submitted
+$("#signupForm").validate();
+
 	var template = jQuery.format($("#template").val());
 	function addRow() {
 		$(template(i++)).appendTo("#orderitems tbody");
@@ -43,25 +34,24 @@ $().ready(function() {
 	// add more rows on click
 	$("#add").click(addRow);
 	
-	// check keyup on quantity inputs to update totals field
-	$("#orderform").delegate("keyup", "input.quantity", function(event) {
-		var totals = 0;
-		$("#orderitems input.quantity").each(function() {
-			totals += +this.value;
-		});
-		$("#totals").attr("value", totals).valid();
-	});
-	
 });
 </script>
 
 <style>
 
 em.error { color: black; }
-#warning { display: none; }
-select.error {
-	border: 1px dotted red;
+#warning { display: block; }
+
+#signupForm .error {
+	width: auto;
+	display:block;
+	color:#FF0000;
+	size:10px;
 }
+/*select.error {
+	border: 1px dotted navy;
+}*/
+
 </style>
 
         <div align="left" style="text-align:justify; float:left;">
@@ -87,18 +77,19 @@ select.error {
 			
 	
 
-            <form name="frm1" action="" method="post" enctype="multipart/form-data">
+            <form name="signupForm" id="signupForm" action="" method="post" enctype="multipart/form-data" class="form">
             <table width="560" border="0" cellspacing="0" cellpadding="0" >
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Key Skills</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_keyskills" type="text" class="form" id="st_keyskills" size="27" />            </td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_keyskills" type="text" class="required form" minlength="2" " id="st_keyskills"  
+			size="27"/></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Resume Headline</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_resumeheadline" type="text" class="form" id="st_resumeheadline" size="27" /></td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_resumeheadline" type="text" class="required form" id="st_resumeheadline" size="27" /></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
@@ -374,21 +365,22 @@ select.error {
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_ex_duration_{0}" type="text" class="form" id="st_ex_duration_{0}" size="27" />            </td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_ex_duration_{0}" type="text" class="required form" id="st_ex_duration_{0}" size="27" />            </td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_ex_function_{0}" type="text" class="form" id="st_ex_function_{0}" size="27" />            </td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_ex_function_{0}" type="text" class="required form" id="st_ex_function_{0}" size="27" />            </td>
             <td width="70" align="right" valign="top"></td>
             </tr>
 
            <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Industry</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><select name="st_ex_industry_{0}" class="form" id="ind" style="width:175px;">
-                    <option value="0" selected="selected" >-- Select Industry --</option>
+            <td width="0" height="25" align="left" valign="top">
+			<select name="st_ex_industry_{0}" class="required form" id="st_ex_industry_{0}" style="width:175px;">
+                    <option value="" selected="selected" >-- Select Industry --</option>
                     <?php echo $options = ListOptions("dup_industry", "industryid", "industryname"); ?>
                   </select></td>
               <td width="70" align="right" valign="top"></td>
@@ -397,12 +389,11 @@ select.error {
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
-			  <select name="st_ex_salary_{0}" class="form" id="re" style="width:175px;">
-                <option value="0" selected="selected" >-- Select Salary --</option>
+			  <select name="st_ex_salary_{0}"  id="st_ex_salary_{0}" class="required form" style="width:175px;">
+                <option value="" selected="selected" >-- Select Salary --</option>
                 <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
               </select></td>
-            <!-- <td width="70" align="right" valign="top"><button id="add">Add another input to the form</button></td> -->
-			<td width="70" align="right" valign="top"></td>
+            <td width="70" align="right" valign="top"><a href="#_{0}" id="remove">Remove</a> </td>
             </tr>
 </textarea>
 
