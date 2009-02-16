@@ -30,8 +30,72 @@ if (!empty($_POST['add'])) {
 	}
 }
 include('header.php');
-?>  
-<form action="" method="post" name="frm" >
+?>
+<script type="text/javascript">
+$.validator.setDefaults({
+	submitHandler: function() { this.submit(); }
+});
+
+$().ready(function() {
+	
+	
+	// validate signup form on keyup and submit
+	// validate signup form on keyup and submit
+	$("#signupForm").validate({
+		rules: {
+			st_username: {
+				required: true,
+				minlength: 2
+			},
+			st_pass: {
+				required: true,
+				minlength: 5
+			},
+			
+			st_email: {
+				required: true,
+				email: true
+			},
+			st_name: {
+				required: true				
+			},
+			st_location: {
+				required: true				
+			},
+			st_mobile: {
+				required: true				
+			}				
+		},
+		messages: {
+			st_username: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			st_pass: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			st_email: "Please enter a valid email address",
+			st_name:"Please enter name",
+			st_location: "Please enter location",
+			st_mobile: "Please enter a valid phone number"
+			
+		}
+	});
+		
+});
+</script>
+
+<style type="text/css">
+#signupForm .error {
+	width: auto;
+	display:block;
+	color:#FF0000;
+}
+
+</style>
+
+<form action="" method="post" id="signupForm" >
   	<div style="width:770px; height:450px; float:left;">
       <div align="left" style="text-align:justify;"><img src="images/du-student.jpg" alt="student"/><br /><br /><br />
       <strong>REGISTER TO FIND JOBS ::....</strong><br /><br />
@@ -51,7 +115,7 @@ include('header.php');
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top">Password</td>
 	  <td width="20" height="25" align="left" valign="top">:</td>
-	  <td width="450" height="25" align="left" valign="top"><input name="st_pass" type="password" class="form" id="pass" size="27" /></td>
+	  <td width="450" height="25" align="left" valign="top"><input name="st_pass" type="password" class="form" id="st_pass" size="27" /></td>
 	  </tr>
 	  <tr>
 	    <td height="5" align="left" valign="top">&nbsp;</td>
@@ -66,24 +130,24 @@ include('header.php');
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Location (City)</td>
 	  <td width="20" height="25" align="left" valign="top">:</td>
-	  <td width="450" height="25" align="left" valign="top"><input name="st_location" type="text" class="form" id="loc" size="27" value="<?php echo $st_location; ?>"/></td>
+	  <td width="450" height="25" align="left" valign="top"><input name="st_location" type="text" class="form" id="st_location" size="27" value="<?php echo $st_location; ?>"/></td>
 	  </tr>
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Mobile No.</td>
-      <td width="20" height="25" align="center" valign="top">:</td>
+      <td width="20" height="25" align="left" valign="top">:</td>
       <td width="450" height="25" align="left" valign="top"><input name="st_mobile" type="text" class="form" id="st_mobile" value="<?php echo $st_mobile; ?>"/></td>
       </tr>
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Email Id</td>
 	  <td width="20" height="25" align="left" valign="top">:</td>
-	  <td width="450" height="25" align="left" valign="top"><input name="st_email" type="text" class="form" id="email" size="27" value="<?php echo $st_email; ?>"/></td>
+	  <td width="450" height="25" align="left" valign="top"><input name="st_email" type="text" class="form" id="st_email" size="27" value="<?php echo $st_email; ?>"/></td>
 	  </tr>
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top"></td>
 	  <td width="20" height="25" align="left" valign="top"></td>
 	  <td width="450" height="25" align="left" valign="top">
 	  <input type="hidden" name="add" value="1" />
-      <input type="image" src="images/du-btn-submit.jpg" name="submit1" id="submit1" value="Submit"  onclick="return ValidateStSignup();"/></td>
+      <input type="image" src="images/du-btn-submit.jpg" name="submit1" id="submit1" value="Submit" /></td>
 	  </tr>
 	  </table>
 	  </div>
