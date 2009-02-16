@@ -25,4 +25,19 @@ function ChkExists($tablename, $chkfield, $chkvalue, $errorvar="error_exists")
 		return 0;
 	}
 }
+
+function ListOptions($tablename, $optionvaluefield, $optionhtmlfield)
+{
+	$chkquery = "select * from ". $tablename;
+	$res = mysql_query($chkquery);
+	$str = "";
+	while ($result = mysql_fetch_array($res))
+	{
+		$optval		= $result[ $optionvaluefield];
+		$opthtml	= $result[ $optionhtmlfield];
+		$str .= "<option value='".$optval."'> ". $opthtml . " </option>";
+	}
+	return $str;
+
+}
 ?>

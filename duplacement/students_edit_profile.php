@@ -1,4 +1,4 @@
-ss<?php
+<?php
 session_start();
 include('include/config.php');
 include('include/commonfunctions.php');
@@ -137,34 +137,7 @@ select.error {
             <td width="20" height="25" align="center" valign="top">:</td>
             <td width="0" height="25" align="left" valign="top"><select name="industry" class="form" id="ind" style="width:175px;">
                     <option value="0" selected="selected" >-- Select Industry --</option>
-                    <option value="Accounting/Taxation" >Accounting/ Taxation</option>
-                    <option value="Advertising/PR/Events Management" >Advertising/ PR/ Events Management</option>
-                    <option value="Architecture/Interior Design" >Architecture/ Interior Design</option>
-                    <option value="Auto" >Auto</option>
-                    <option value="Banking/Broking/Financial Services" >Banking/ Broking/ Financial Services</option>
-                    <option value="BPO/ ITeS/KPO/Transcription" >BPO/ ITeS/KPO/ Transcription</option>
-                    <option value="Consumer Durables" >Consumer Durables</option>
-                    <option value="Consulting" >Consulting</option>
-                    <option value="Defense/Government" >Defense/ Government</option>
-                    <option value="Education/Teaching/Training" >Education/ Teaching/ Training</option>
-                    <option value="Export/Import" >Export/ Import</option>
-                    <option value="Fashion/Garments/Merchandising" >Fashion/ Garments/ Merchandising</option>
-                    <option value="FMCG/Foods/Beverage" >FMCG/ Foods/ Beverage</option>
-                    <option value="Hotels/Restaurants/Travel/Airlines" >Hotels/ Restaurants/ Travel/Airlines</option>
-                    <option value="Healthcare/Medical/Hospital" >Healthcare/ Medical/Hospital</option>
-                    <option value="Industrial Products/Machinery" >Industrial Products/ Machinery</option>
-                    <option value="Insurance" >Insurance</option>
-                    <option value="IT-Hardware" >IT-Hardware</option>
-                    <option value="IT-Software" >IT-Software</option>
-                    <option value="Legal" >Legal</option>
-                    <option value="Media/Entertainment" >Media/ Entertainment</option>
-                    <option value="NGO/Social Service" >NGO/Social Service</option>
-                    <option value="Pharma/Biotech/Clinical Research" >Pharma/ Biotech/ Clinical Research</option>
-                    <option value="Real Estate/Property" >Real Estate/ Property</option>
-                    <option value="Recruitment/Employment" >Recruitment/ Employment</option>
-                    <option value="Retail" >Retail</option>
-                    <option value="Telecom/ISP" >Telecom/ ISP</option>
-                    <option value="other" >Others</option>
+                    <?php echo $options = ListOptions("dup_industry", "industryid", "industryname"); ?>
                   </select></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
@@ -173,13 +146,7 @@ select.error {
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top"><select name="re" class="form" id="re" style="width:175px;">
                 <option value="0" selected="selected" >-- Select Salary --</option>
-                <option value="1" >below 1.2 lac</option>
-                <option value="2" >1.2 lac - 2.4 lacs</option>
-                <option value="3" >2.4 lacs - 4.8 lacs</option>
-                <option value="4" >5.0 lacs - 6.0 lacs</option>
-                <option value="5" >6.0 lacs - 7.0 lacs</option>
-                <option value="6" >7.0 lacs - 8.0 lacs</option>
-                <option value="7" >above 8 lacs</option>
+                <?php echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
               </select></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
