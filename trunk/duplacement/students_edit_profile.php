@@ -304,12 +304,17 @@ select.error {
               </tr> -->
 			  
 			  
-			  <tr><td colspan="4"><table id="orderitems"><tbody></tbody></table></td></tr>
+			  <tr>
+			  	<td colspan="4"><table id="orderitems"><tbody></tbody></table></td>
+			  </tr>
+			  <tr>
+			  	<td  align="right" colspan="4" id="add"><a href="#_{0}">add more</a></td>
+			  </tr>
               <tr>
               <td width="150" height="10" align="left" valign="top"></td>
               <td height="10" align="center" valign="top"></td>
               <td width="0" height="10" align="left" valign="top"></td>
-              <td width="70" align="right" valign="top"><button id="add"> add more</button></td>
+              <td width="70" align="right" valign="top" > </td>
               </tr>
               <tr>
               <td width="150" height="10" align="left" valign="top"></td>
@@ -359,9 +364,9 @@ select.error {
             </div>
           </div>
         </div>
-<textarea style="display:none" id="template">
+<textarea style="display:none; padding-left:inherit" id="template">
 <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span><strong>Experience {0}</strong></td>
+            <td width="150" height="25" align="left" valign="top" id="#_{0}"><span class="star">* </span><strong>Experience {0}</strong></td>
             <td width="20" height="25" align="center" valign="top"></td>
             <td width="0" height="25" align="left" valign="top"></td>
             <td width="70" align="right" valign="top"></td>
