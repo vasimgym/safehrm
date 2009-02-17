@@ -23,18 +23,30 @@ $().ready(function() {
 // validate the comment form when it is submitted
 $("#signupForm").validate();
 
-	var template = jQuery.format($("#template").val());
-	function addRow() {
-		$(template(i++)).appendTo("#orderitems tbody");
-	}
-	
-	var i = 1;
-	// start with one row
-	addRow();
-	// add more rows on click
-	$("#add").click(addRow);
-	
+var template = jQuery.format($("#template").val());
+function addRow() {
+	$(template(i++)).appendTo("#orderitems tbody");
+}
+
+var i = 1;
+// start with one row
+addRow();
+// add more rows on click
+$("#add").click(addRow);
+
+
+function removerow(id) {
+//$("#st_ex_duration_1").remove();
+$(id).remove();
+//$("#st_ex_duration_1").css("display") ="none";
+
+}
+
+$("#remove", "st_ex_duration_1").click(removerow);
+
 });
+
+
 </script>
 
 <style>
@@ -393,7 +405,7 @@ em.error { color: black; }
                 <option value="" selected="selected" >-- Select Salary --</option>
                 <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
               </select></td>
-            <td width="70" align="right" valign="top"><a href="#_{0}" id="remove">Remove</a> </td>
+            <td width="70" align="right" valign="top"><a href="#_{0}" id="remove" >Remove</a> </td>
             </tr>
 </textarea>
 
