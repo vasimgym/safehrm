@@ -12,11 +12,38 @@ if($_POST['editprofile'])
 	$st_keyskills 		= $_POST['st_keyskills'];
 	$st_resumeheadline 	= stripslashes($_POST['st_resumeheadline']);	
 	$st_textresume 		= $_POST['st_textresume'];
+	$st_resumepath		= trim(stripslashes($_FILES['st_resume']['name']));
+	// handle file upload
+	$target_dir = "upload/resume/";
+	
+	
+	if (!empty($st_resumepath)) 
+	{
+		if (!is_dir($target_dir)) { @mkdir($target_dir,0777); }
+		$st_resumepath = "__".time()."__".$st_resumepath;
+		$path		   = $target_dir."/".$st_resumepath;
+		$tmp_name	   = $_FILES['st_resume']['tmp_name'];
+		
+		$type = $_FILES["st_resume"]["name"];				
+		$filetype = substr($type,-4);				
+		$size = $_FILES["st_resume"]["size"] / 1024;
+		
+		if (($filetype == ".doc") || ($filetype == ".rtf") || ($filetype == ".wps")) 
+		{
+			if ($size <= 1024) {
+				if (!move_uploaded_file($tmp_name,$path)) {
+					triggerMessage("err_student", "Error: upload Failed!");	
+				}
+			}
+		}
+	}
+	
 	
 	$sql1 = "UPDATE `dup_students` SET 
 			`st_keyskills` = '$st_keyskills', 
 			`st_resumeheadline` = '$st_resumeheadline',
-			`st_textresume` = '$st_textresume' 			
+			`st_textresume` = '$st_textresume',
+			`st_resumepath` = '$st_resumepath'		
 	WHERE	`st_id` = '".$_SESSION['stUserID']."' LIMIT 1";
 	$res1 = mysql_query($sql1);
 	
@@ -51,13 +78,16 @@ if($_POST['editprofile'])
 			
 			$sql2 = "UPDATE `dup_studentexp` SET  `ex_number` = '$i', `ex_duration` = '$stexduration',
 				 `ex_function` = '$stexfunction', `ex_industry` = '$stexindustry', `ex_remuneration` = '$stexsalary' 
-				 WHERE `ex_id` = '$ex_id' LIMIT 1";
+				 WHERE `ex_id` = '$ex_id' ";
 			mysql_query($sql2);
 			
 		}
 		
+		
+		
 	}
 	//print_r($_POST);
+	triggerMessage("err_student", "Profile Updated!");	
 }
 
 
@@ -113,7 +143,6 @@ $("#remove", "st_ex_duration_1").click(removerow);
 
 });
 
-
 </script>
 
 <style>
@@ -159,6 +188,12 @@ em.error { color: black; }
             <form name="signupForm" id="signupForm" action="" method="post" enctype="multipart/form-data" class="form">
 			<input type="hidden" name="editprofile" value="1" />
             <table width="560" border="0" cellspacing="0" cellpadding="0" >
+            <tr>
+              <td height="25" align="left" valign="top">&nbsp;</td>
+              <td height="25" align="center" valign="top">&nbsp;</td>
+              <td height="25" align="left" valign="top"><?php outputTrigger('err_student'); ?></td>
+              <td align="right" valign="top"></td>
+            </tr>
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Key Skills</td>
             <td width="20" height="25" align="center" valign="top">:</td>
@@ -213,8 +248,7 @@ em.error { color: black; }
 			<select name="st_ex_function_<?php echo $n; ?>" class="required form" id="st_ex_function_<?php echo $n; ?>" style="width:175px;">
                     <option value="" selected="selected" >-- Select Function --</option>
                     <?php echo $options = ListOptions("dup_functions", "functionid", "functionname", $expresult['ex_function']); ?>
-                  </select>
-				  </td>
+                  </select>				  </td>
             <td width="70" align="right" valign="top"></td>
             </tr>
 
@@ -247,7 +281,7 @@ em.error { color: black; }
 			  	<td colspan="4"><table id="orderitems"><tbody></tbody></table></td>
 			  </tr>
 			  <tr>
-			  	<td  align="right" colspan="4" id="add"><a href="#_{0}"><img src="images/du-btn-addmore.jpg" border="0"/></a></td>
+			  	<td  align="right" colspan="4" id="add"><a href="#_{0}"><img  src="images/du-btn-addmore.jpg" border="0"/></a></td>
 			  </tr>
               <tr>
               <td width="150" height="10" align="left" valign="top"></td>
@@ -261,11 +295,14 @@ em.error { color: black; }
               <td width="0" height="10" align="left" valign="top"></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
-
+				<tr  colspan="4"><td><img id="loading" src="images/loading.gif" style="display:none;"></td></tr>
+				
               <tr>
               <td width="150" height="25" align="left" valign="top"><strong>Upload Resume</strong></td>
               <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><input type="image" src="images/du-btn-upload.jpg" name="submit2" id="submit2" value="Submit" /></td>
+              <td width="0" height="25" align="left" valign="top">
+			  <input id="st_resume" type="file" size="25" name="st_resume">
+			 <!-- <input type="image" src="images/du-btn-upload.jpg" id="buttonUpload" /> --></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
               <tr>
@@ -284,7 +321,7 @@ em.error { color: black; }
               <td width="150" height="35" align="left" valign="top"></td>
               <td width="20" height="35" align="center" valign="top"></td>
               <td width="0" height="35" align="left" valign="top">
-			  <input  type="hidden" name="counter" value="" id="counter">
+			  <input  type="hidden" name="counter" value="<?php echo $maxnumber; ?>" id="counter">
 			  <input type="image" src="images/du-btn-submit.jpg" name="submit" id="submit" value="Submit" /></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
