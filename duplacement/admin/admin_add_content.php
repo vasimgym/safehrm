@@ -73,6 +73,31 @@
     </div>
 
 	</div>
+	
+	
+	
+	 <div style="height:20px;"></div>
+
+	<div style="width:530px; height:55px; padding-left:40px;">
+
+	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
+   	  
+      <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD SALARY</strong></span><br />
+      
+      <a href="add_salary.php" class="linkA">Create or manage, admin<br />and user panel.</a>
+
+    </div>
+
+	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
+
+   	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE SALARY</strong></span><br />
+      
+      <a href="manage_salary.php" class="linkA">Create or manage, admin<br />and user panel.</a>
+
+    </div>
+
+	</div>
+
 
 	<div style="height:20px;"></div>
 
