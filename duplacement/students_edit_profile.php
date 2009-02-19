@@ -39,24 +39,35 @@ if($_POST['editprofile'])
 		$stexindustry 	= $_POST[$st_ex_industry];
 		$stexsalary 	= $_POST[$st_ex_salary];
 		$where = "`ex_st_id` = '" .$_SESSION['stUserID'] . "' and `ex_number` = '" . $i . "'" ;
-		echo $ex_id = ChkRecordExists("dup_studentexp", $where, 'ex_id');
+		$ex_id = ChkRecordExists("dup_studentexp", $where, 'ex_id');
 		if ($ex_id == 0)
-		{
-			$sql2 = "INSERT INTO `dup_studentexp` (`ex_id`, `ex_st_id`, `ex_number`, `ex_duration`, `ex_function`, `ex_industry`, `ex_remuneration`) VALUES (NULL,'$studentid', '$i', '$stexduration', '$stexfunction', '$stexindustry', '$stexsalary')";
+		{	
+			if (!empty($stexduration))
+			{
+				$sql2 = "INSERT INTO `dup_studentexp` (`ex_id`, `ex_st_id`, `ex_number`, `ex_duration`, `ex_function`, `ex_industry`, `ex_remuneration`) VALUES (NULL,'$studentid', '$i', '$stexduration', '$stexfunction', '$stexindustry', '$stexsalary')";
+				mysql_query($sql2);
+			}
 		} else {
-			$sql2 = "UPDATE `dup_studentexp` SET  `ex_number` = '$i', `ex_duration` = '$stexduration', `ex_function` = '$stexfunction', `ex_industry` = '$stexindustry', `ex_remuneration` = '$stexsalary' WHERE `ex_id` = '$ex_id' LIMIT 1";
+			
+			$sql2 = "UPDATE `dup_studentexp` SET  `ex_number` = '$i', `ex_duration` = '$stexduration',
+				 `ex_function` = '$stexfunction', `ex_industry` = '$stexindustry', `ex_remuneration` = '$stexsalary' 
+				 WHERE `ex_id` = '$ex_id' LIMIT 1";
+			mysql_query($sql2);
+			
 		}
-		mysql_query($sql2);
-		
-
 		
 	}
 	//print_r($_POST);
-	
-	
-
 }
 
+
+$select = mysql_query("select * from dup_students where st_id='$studentid' ");
+$selectresult = mysql_fetch_array($select);
+
+$maxnumber = 0;
+$selectexp = mysql_query("select max(ex_number) as maxnumber from dup_studentexp where ex_st_id='$studentid' ");
+$maxnres = mysql_fetch_array($selectexp);
+$maxnumber = $maxnres['maxnumber'];
 
 include('studentheader.php');
 ?>
@@ -82,9 +93,11 @@ function addRow() {
 	document.signupForm.counter.value=i-1;
 }
 
-var i = 1;
+var i = <?php echo $maxnumber+1; ?>;
+<?php if ($maxnumber == 0) {  ?>
 // start with one row
 addRow();
+<?php } ?>
 // add more rows on click
 $("#add").click(addRow);
 
@@ -150,13 +163,14 @@ em.error { color: black; }
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Key Skills</td>
             <td width="20" height="25" align="center" valign="top">:</td>
             <td width="0" height="25" align="left" valign="top"><input name="st_keyskills" type="text" class="required form" minlength="2" " id="st_keyskills"  
-			size="27"/></td>
+			size="27"  value="<?php echo $selectresult['st_keyskills'];?>"/></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Resume Headline</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_resumeheadline" type="text" class="required form" id="st_resumeheadline" size="27" /></td>
+            <td width="0" height="25" align="left" valign="top">
+			<input name="st_resumeheadline" type="text" class="required form" id="st_resumeheadline" size="27"  value="<?php echo $selectresult['st_resumeheadline'];?>"/></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
@@ -171,6 +185,58 @@ em.error { color: black; }
             <td width="0" height="10" align="left" valign="top"></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
+			
+			<?php $k = 1;
+			for ($n=1; $n <= $maxnumber; $n++)  { 
+				$expsql 	= mysql_query("select * from dup_studentexp where ex_st_id='$studentid' and ex_number='$n' ");
+				$expresult 	= mysql_fetch_array($expsql);
+				if(!empty($expresult))
+				{
+				
+			?>
+			<tr>
+            <td width="150" height="25" align="left" valign="top" id="#_{0}"><span class="star">* </span><strong>Experience <?php echo $k; ?></strong></td>
+            <td width="20" height="25" align="center" valign="top"></td>
+            <td width="0" height="25" align="left" valign="top"></td>
+            <td width="70" align="right" valign="top"></td>
+            </tr>
+            <tr>
+            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
+            <td width="20" height="25" align="center" valign="top">:</td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_ex_duration_<?php echo $n; ?>" type="text" class="required form" id="st_ex_duration_<?php echo $n; ?>" size="27" value="<?php echo $expresult['ex_duration']; ?>" />            </td>
+            <td width="70" align="right" valign="top"></td>
+            </tr>
+            <tr>
+            <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
+            <td width="20" height="25" align="center" valign="top">:</td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_ex_function_<?php echo $n; ?>" type="text" class="required form" id="st_ex_function_<?php echo $n; ?>" size="27"   value="<?php echo $expresult['ex_function']; ?>" />            </td>
+            <td width="70" align="right" valign="top"></td>
+            </tr>
+
+           <tr>
+            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Industry</td>
+            <td width="20" height="25" align="center" valign="top">:</td>
+            <td width="0" height="25" align="left" valign="top">
+			<select name="st_ex_industry_<?php echo $n; ?>" class="required form" id="st_ex_industry_<?php echo $n; ?>" style="width:175px;">
+                    <option value="" selected="selected" >-- Select Industry --</option>
+                    <?php echo $options = ListOptions("dup_industry", "industryid", "industryname"); ?>
+                  </select></td>
+              <td width="70" align="right" valign="top"></td>
+              </tr>
+              <tr>
+              <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
+              <td width="20" height="25" align="center" valign="top">:</td>
+              <td width="0" height="25" align="left" valign="top">
+			  <select name="st_ex_salary_<?php echo $n; ?>"  id="st_ex_salary_<?php echo $n; ?>" class="form" style="width:175px;">
+                <option value="" selected="selected" >-- Select Salary --</option>
+                <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
+              </select></td>
+            <td width="70" align="right" valign="top"><a href="#_{0}" id="remove" >Remove</a> </td>
+            </tr>
+			
+			<?php
+			$k++; } 
+			} ?>
            	  
 			  <tr>
 			  	<td colspan="4"><table id="orderitems"><tbody></tbody></table></td>
@@ -200,7 +266,7 @@ em.error { color: black; }
               <tr>
               <td width="150" height="25" align="left" valign="top">Copy or paste resume</td>
               <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><textarea name="st_textresume" cols="21" rows="5" class="form" id="description"></textarea></td>
+              <td width="0" height="25" align="left" valign="top"><textarea name="st_textresume" cols="21" rows="5" class="form" id="description"><?php echo $selectresult['st_textresume'];?></textarea></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
               <tr>
@@ -213,7 +279,7 @@ em.error { color: black; }
               <td width="150" height="35" align="left" valign="top"></td>
               <td width="20" height="35" align="center" valign="top"></td>
               <td width="0" height="35" align="left" valign="top">
-			  <input  type="text" name="counter" value="" id="counter">
+			  <input  type="hidden" name="counter" value="" id="counter">
 			  <input type="image" src="images/du-btn-submit.jpg" name="submit" id="submit" value="Submit" /></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
@@ -236,7 +302,7 @@ em.error { color: black; }
         </div>
 <textarea style="display:none; padding-left:inherit" id="template">
 <tr>
-            <td width="150" height="25" align="left" valign="top" id="#_{0}"><span class="star">* </span><strong>Experience {0}</strong></td>
+            <td width="150" height="25" align="left" valign="top" id="#_{0}"><span class="star">* </span><strong>Add Experience</strong></td>
             <td width="20" height="25" align="center" valign="top"></td>
             <td width="0" height="25" align="left" valign="top"></td>
             <td width="70" align="right" valign="top"></td>
