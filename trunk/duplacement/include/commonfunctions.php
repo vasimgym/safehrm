@@ -12,6 +12,22 @@ function outputTrigger($id)
 	echo "<font color='red'>" . $m . "</font>";
 }
 
+// check if record already exists.
+function ChkRecordExists($tablename, $where, $returnfield)
+{
+	$chkquery = "select * from ". $tablename ." where ". $where. " limit 1";
+	$res = mysql_query($chkquery);
+	$num = mysql_num_rows($res);
+	if ($num > 0) {
+		$result = mysql_fetch_array($res);
+		$primarykeyval = $result[$returnfield];
+		return $primarykeyval;
+	} else {
+		return 0;
+	}
+}
+
+
 // check if username already exists.
 function ChkExists($tablename, $chkfield, $chkvalue, $errorvar="error_exists")
 {
@@ -19,7 +35,7 @@ function ChkExists($tablename, $chkfield, $chkvalue, $errorvar="error_exists")
 	$res = mysql_query($chkquery);
 	$num = mysql_num_rows($res);
 	if ($num > 0) {
-		triggerMessage($errorvar, "Username already exists!");
+		// triggerMessage($errorvar, "record already exists!");
 		return 1;
 	} else {
 		return 0;

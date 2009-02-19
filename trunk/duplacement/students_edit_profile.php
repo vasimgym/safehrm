@@ -6,6 +6,58 @@ if (empty($_SESSION['stUser'])) {
   	header('location:signin.php');	
 }
 
+$studentid = $_SESSION['stUserID'];
+if($_POST['editprofile'])
+{
+	$st_keyskills 		= $_POST['st_keyskills'];
+	$st_resumeheadline 	= stripslashes($_POST['st_resumeheadline']);	
+	$st_textresume 		= $_POST['st_textresume'];
+	
+	$sql1 = "UPDATE `dup_students` SET 
+			`st_keyskills` = '$st_keyskills', 
+			`st_resumeheadline` = '$st_resumeheadline',
+			`st_textresume` = '$st_textresume' 			
+	WHERE	`st_id` = '".$_SESSION['stUserID']."' LIMIT 1";
+	$res1 = mysql_query($sql1);
+	
+	// update main student table
+	/*$sql = "UPDATE `dup_students` SET `st_username` = 'teststudent1', `st_pass` = 'teststudent1', `st_email` = 'sdfesfsd@fdgbfdg.com', `st_name` = 'sdfdf1', `st_location` = 'ccfvdf1', `st_mobile` = '098887733201', `st_status` = 'block', `st_keyskills` = 'sdfdef', `st_resumeheadline` = 'aaadd', `st_resumepath` = 'aaadd', `st_textresume` = 'ssff', `st_contact_no` = 'dfds', `st_ug_qualification` = 'dfdf', `st_ug_specilization` = 'dfd', `st_ug_univ` = 'df', `st_ug_college` = 'dsd', `st_ug_passyear` = 'dsd', `st_pg_qualification` = 'ds', `st_ug_specilizationp` = 's', `st_pg_univ` = 'sdd', `st_pg_college` = 'sdsd', `st_pg_passyear` = 'ds' WHERE `st_id` = 14 LIMIT 1;";
+	*/
+	
+	
+	$counter = $_POST['counter'];
+	for ($i=1; $i <= $counter; $i++)
+	{
+		
+		$st_ex_duration  = "st_ex_duration_".$i;
+		$st_ex_function  = 'st_ex_function_'.$i;
+		$st_ex_industry  = 'st_ex_industry_'.$i;
+		$st_ex_salary 	 = 'st_ex_salary_'.$i;
+		
+		$stexduration 	= $_POST[$st_ex_duration];
+		$stexfunction 	= $_POST[$st_ex_function];
+		$stexindustry 	= $_POST[$st_ex_industry];
+		$stexsalary 	= $_POST[$st_ex_salary];
+		$where = "`ex_st_id` = '" .$_SESSION['stUserID'] . "' and `ex_number` = '" . $i . "'" ;
+		echo $ex_id = ChkRecordExists("dup_studentexp", $where, 'ex_id');
+		if ($ex_id == 0)
+		{
+			$sql2 = "INSERT INTO `dup_studentexp` (`ex_id`, `ex_st_id`, `ex_number`, `ex_duration`, `ex_function`, `ex_industry`, `ex_remuneration`) VALUES (NULL,'$studentid', '$i', '$stexduration', '$stexfunction', '$stexindustry', '$stexsalary')";
+		} else {
+			$sql2 = "UPDATE `dup_studentexp` SET  `ex_number` = '$i', `ex_duration` = '$stexduration', `ex_function` = '$stexfunction', `ex_industry` = '$stexindustry', `ex_remuneration` = '$stexsalary' WHERE `ex_id` = '$ex_id' LIMIT 1";
+		}
+		mysql_query($sql2);
+		
+
+		
+	}
+	//print_r($_POST);
+	
+	
+
+}
+
+
 include('studentheader.php');
 ?>
 
@@ -13,7 +65,7 @@ include('studentheader.php');
 // only for demo purposes
 $.validator.setDefaults({
 	submitHandler: function() {
-		alert("submitted!");
+		signupForm.submit();
 	}
 });
 
@@ -26,6 +78,8 @@ $("#signupForm").validate();
 var template = jQuery.format($("#template").val());
 function addRow() {
 	$(template(i++)).appendTo("#orderitems tbody");
+	//$("#counter").value='test';
+	document.signupForm.counter.value=i-1;
 }
 
 var i = 1;
@@ -90,6 +144,7 @@ em.error { color: black; }
 	
 
             <form name="signupForm" id="signupForm" action="" method="post" enctype="multipart/form-data" class="form">
+			<input type="hidden" name="editprofile" value="1" />
             <table width="560" border="0" cellspacing="0" cellpadding="0" >
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Key Skills</td>
@@ -116,197 +171,7 @@ em.error { color: black; }
             <td width="0" height="10" align="left" valign="top"></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
-           <!-- <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span><strong>Experience 01</strong></td>
-            <td width="20" height="25" align="center" valign="top"></td>
-            <td width="0" height="25" align="left" valign="top"></td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Industry</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><select name="industry_{0}" class="form" id="ind" style="width:175px;">
-                    <option value="0" selected="selected" >-- Select Industry --</option>
-                    <?php //echo $options = ListOptions("dup_industry", "industryid", "industryname"); ?>
-                  </select></td>
-              <td width="70" align="right" valign="top"></td>
-              </tr>
-              <tr>
-              <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
-              <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><select name="salary_{0}" class="form" id="re" style="width:175px;">
-                <option value="0" selected="selected" >-- Select Salary --</option>
-                <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
-              </select></td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="10" align="left" valign="top"></td>
-            <td height="10" align="center" valign="top"></td>
-            <td width="0" height="10" align="left" valign="top"></td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span><strong>Experience 02</strong></td>
-            <td width="20" height="25" align="center" valign="top"></td>
-            <td width="0" height="25" align="left" valign="top"></td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Industry</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><select name="industry" class="form" id="ind" style="width:175px;">
-                    <option value="0" selected="selected" >-- Select Industry --</option>
-                    <option value="Accounting/Taxation" >Accounting/ Taxation</option>
-                    <option value="Advertising/PR/Events Management" >Advertising/ PR/ Events Management</option>
-                    <option value="Architecture/Interior Design" >Architecture/ Interior Design</option>
-                    <option value="Auto" >Auto</option>
-                    <option value="Banking/Broking/Financial Services" >Banking/ Broking/ Financial Services</option>
-                    <option value="BPO/ ITeS/KPO/Transcription" >BPO/ ITeS/KPO/ Transcription</option>
-                    <option value="Consumer Durables" >Consumer Durables</option>
-                    <option value="Consulting" >Consulting</option>
-                    <option value="Defense/Government" >Defense/ Government</option>
-                    <option value="Education/Teaching/Training" >Education/ Teaching/ Training</option>
-                    <option value="Export/Import" >Export/ Import</option>
-                    <option value="Fashion/Garments/Merchandising" >Fashion/ Garments/ Merchandising</option>
-                    <option value="FMCG/Foods/Beverage" >FMCG/ Foods/ Beverage</option>
-                    <option value="Hotels/Restaurants/Travel/Airlines" >Hotels/ Restaurants/ Travel/Airlines</option>
-                    <option value="Healthcare/Medical/Hospital" >Healthcare/ Medical/Hospital</option>
-                    <option value="Industrial Products/Machinery" >Industrial Products/ Machinery</option>
-                    <option value="Insurance" >Insurance</option>
-                    <option value="IT-Hardware" >IT-Hardware</option>
-                    <option value="IT-Software" >IT-Software</option>
-                    <option value="Legal" >Legal</option>
-                    <option value="Media/Entertainment" >Media/ Entertainment</option>
-                    <option value="NGO/Social Service" >NGO/Social Service</option>
-                    <option value="Pharma/Biotech/Clinical Research" >Pharma/ Biotech/ Clinical Research</option>
-                    <option value="Real Estate/Property" >Real Estate/ Property</option>
-                    <option value="Recruitment/Employment" >Recruitment/ Employment</option>
-                    <option value="Retail" >Retail</option>
-                    <option value="Telecom/ISP" >Telecom/ ISP</option>
-                    <option value="other" >Others</option>
-                  </select></td>
-              <td width="70" align="right" valign="top"></td>
-              </tr>
-              <tr>
-              <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
-              <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><select name="re2" class="form" id="re2" style="width:175px;">
-                <option value="0" selected="selected" >-- Select Salary --</option>
-                <option value="1" >below 1.2 lac</option>
-                <option value="2" >1.2 lac - 2.4 lacs</option>
-                <option value="3" >2.4 lacs - 4.8 lacs</option>
-                <option value="4" >5.0 lacs - 6.0 lacs</option>
-                <option value="5" >6.0 lacs - 7.0 lacs</option>
-                <option value="6" >7.0 lacs - 8.0 lacs</option>
-                <option value="7" >above 8 lacs</option>
-              </select></td>
-              <td width="70" align="right" valign="top"><a href="#" class="link">..add</a></td>
-              </tr>
-              <tr>
-              <td width="150" height="10" align="left" valign="top"></td>
-              <td height="10" align="center" valign="top"></td>
-              <td width="0" height="10" align="left" valign="top"></td>
-              <td width="70" align="right" valign="top"></td>
-              </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span><strong>Experience 03</strong></td>
-            <td width="20" height="25" align="center" valign="top"></td>
-            <td width="0" height="25" align="left" valign="top"></td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" size="27" />            </td>
-            <td width="70" align="right" valign="top"></td>
-            </tr>
-
-            <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Industry</td>
-            <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><select name="industry" class="form" id="ind" style="width:175px;">
-                    <option value="0" selected="selected" >-- Select Industry --</option>
-                    <option value="Accounting/Taxation" >Accounting/ Taxation</option>
-                    <option value="Advertising/PR/Events Management" >Advertising/ PR/ Events Management</option>
-                    <option value="Architecture/Interior Design" >Architecture/ Interior Design</option>
-                    <option value="Auto" >Auto</option>
-                    <option value="Banking/Broking/Financial Services" >Banking/ Broking/ Financial Services</option>
-                    <option value="BPO/ ITeS/KPO/Transcription" >BPO/ ITeS/KPO/ Transcription</option>
-                    <option value="Consumer Durables" >Consumer Durables</option>
-                    <option value="Consulting" >Consulting</option>
-                    <option value="Defense/Government" >Defense/ Government</option>
-                    <option value="Education/Teaching/Training" >Education/ Teaching/ Training</option>
-                    <option value="Export/Import" >Export/ Import</option>
-                    <option value="Fashion/Garments/Merchandising" >Fashion/ Garments/ Merchandising</option>
-                    <option value="FMCG/Foods/Beverage" >FMCG/ Foods/ Beverage</option>
-                    <option value="Hotels/Restaurants/Travel/Airlines" >Hotels/ Restaurants/ Travel/Airlines</option>
-                    <option value="Healthcare/Medical/Hospital" >Healthcare/ Medical/Hospital</option>
-                    <option value="Industrial Products/Machinery" >Industrial Products/ Machinery</option>
-                    <option value="Insurance" >Insurance</option>
-                    <option value="IT-Hardware" >IT-Hardware</option>
-                    <option value="IT-Software" >IT-Software</option>
-                    <option value="Legal" >Legal</option>
-                    <option value="Media/Entertainment" >Media/ Entertainment</option>
-                    <option value="NGO/Social Service" >NGO/Social Service</option>
-                    <option value="Pharma/Biotech/Clinical Research" >Pharma/ Biotech/ Clinical Research</option>
-                    <option value="Real Estate/Property" >Real Estate/ Property</option>
-                    <option value="Recruitment/Employment" >Recruitment/ Employment</option>
-                    <option value="Retail" >Retail</option>
-                    <option value="Telecom/ISP" >Telecom/ ISP</option>
-                    <option value="other" >Others</option>
-                  </select></td>
-              <td width="70" align="right" valign="top"></td>
-            </tr>
-              <tr>
-              <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
-              <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><select name="re3" class="form" id="re3" style="width:175px;">
-                <option value="0" selected="selected" >-- Select Salary --</option>
-                <option value="1" >below 1.2 lac</option>
-                <option value="2" >1.2 lac - 2.4 lacs</option>
-                <option value="3" >2.4 lacs - 4.8 lacs</option>
-                <option value="4" >5.0 lacs - 6.0 lacs</option>
-                <option value="5" >6.0 lacs - 7.0 lacs</option>
-                <option value="6" >7.0 lacs - 8.0 lacs</option>
-                <option value="7" >above 8 lacs</option>
-              </select></td>
-              <td width="70" align="right" valign="top"><a href="#" class="link">..remove</a></td>
-              </tr> -->
-			  
-			  
+           	  
 			  <tr>
 			  	<td colspan="4"><table id="orderitems"><tbody></tbody></table></td>
 			  </tr>
@@ -347,7 +212,9 @@ em.error { color: black; }
               <tr>
               <td width="150" height="35" align="left" valign="top"></td>
               <td width="20" height="35" align="center" valign="top"></td>
-              <td width="0" height="35" align="left" valign="top"><input type="image" src="images/du-btn-submit.jpg" name="submit" id="submit" value="Submit" /></td>
+              <td width="0" height="35" align="left" valign="top">
+			  <input  type="text" name="counter" value="" id="counter">
+			  <input type="image" src="images/du-btn-submit.jpg" name="submit" id="submit" value="Submit" /></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
               </table>
@@ -401,7 +268,7 @@ em.error { color: black; }
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
-			  <select name="st_ex_salary_{0}"  id="st_ex_salary_{0}" class="required form" style="width:175px;">
+			  <select name="st_ex_salary_{0}"  id="st_ex_salary_{0}" class="form" style="width:175px;">
                 <option value="" selected="selected" >-- Select Salary --</option>
                 <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
               </select></td>
