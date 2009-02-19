@@ -209,7 +209,12 @@ em.error { color: black; }
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_ex_function_<?php echo $n; ?>" type="text" class="required form" id="st_ex_function_<?php echo $n; ?>" size="27"   value="<?php echo $expresult['ex_function']; ?>" />            </td>
+            <td width="0" height="25" align="left" valign="top">
+			<select name="st_ex_function_<?php echo $n; ?>" class="required form" id="st_ex_function_<?php echo $n; ?>" style="width:175px;">
+                    <option value="" selected="selected" >-- Select Function --</option>
+                    <?php echo $options = ListOptions("dup_functions", "functionid", "functionname", $expresult['ex_function']); ?>
+                  </select>
+				  </td>
             <td width="70" align="right" valign="top"></td>
             </tr>
 
@@ -227,9 +232,9 @@ em.error { color: black; }
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
-			  <select name="st_ex_salary_<?php echo $n; ?>"  id="st_ex_salary_<?php echo $n; ?>" class="form" style="width:175px;">
+			  <select name="st_ex_salary_<?php echo $n; ?>"  id="st_ex_salary_<?php echo $n; ?>" class="required form" style="width:175px;">
                 <option value="" selected="selected" >-- Select Salary --</option>
-                <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
+                <?php echo $options = ListOptions("dup_salary", "salaryid", "salaryname", $expresult['ex_remuneration']); ?>
               </select></td>
             <td width="70" align="right" valign="top"><a href="#_{0}" id="remove" >Remove</a> </td>
             </tr>
@@ -242,7 +247,7 @@ em.error { color: black; }
 			  	<td colspan="4"><table id="orderitems"><tbody></tbody></table></td>
 			  </tr>
 			  <tr>
-			  	<td  align="right" colspan="4" id="add"><a href="#_{0}">add more</a></td>
+			  	<td  align="right" colspan="4" id="add"><a href="#_{0}"><img src="images/du-btn-addmore.jpg" border="0"/></a></td>
 			  </tr>
               <tr>
               <td width="150" height="10" align="left" valign="top"></td>
@@ -266,7 +271,7 @@ em.error { color: black; }
               <tr>
               <td width="150" height="25" align="left" valign="top">Copy or paste resume</td>
               <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><textarea name="st_textresume" cols="21" rows="5" class="form" id="description"><?php echo $selectresult['st_textresume'];?></textarea></td>
+              <td width="0" height="25" align="left" valign="top"><textarea name="st_textresume" cols="60" rows="7" class="form" id="description"><?php echo $selectresult['st_textresume'];?></textarea></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
               <tr>
@@ -304,11 +309,11 @@ em.error { color: black; }
 <tr>
             <td width="150" height="25" align="left" valign="top" id="#_{0}"><span class="star">* </span><strong>Add Experience</strong></td>
             <td width="20" height="25" align="center" valign="top"></td>
-            <td width="0" height="25" align="left" valign="top"></td>
+            <td width="20" height="25" align="left" valign="top"></td>
             <td width="70" align="right" valign="top"></td>
             </tr>
             <tr>
-            <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
+            <td width="190" height="25" align="left" valign="top"><span class="star">* </span>Duration</td>
             <td width="20" height="25" align="center" valign="top">:</td>
             <td width="0" height="25" align="left" valign="top"><input name="st_ex_duration_{0}" type="text" class="required form" id="st_ex_duration_{0}" size="27" />            </td>
             <td width="70" align="right" valign="top"></td>
@@ -316,7 +321,12 @@ em.error { color: black; }
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">*</span> Function</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="st_ex_function_{0}" type="text" class="required form" id="st_ex_function_{0}" size="27" />            </td>
+            <td width="0" height="25" align="left" valign="top">
+			<select name="st_ex_function_{0}" class="required form" id="st_ex_function_{0}" style="width:175px;">
+                    <option value="" selected="selected" >-- Select Function --</option>
+                    <?php echo $options = ListOptions("dup_functions", "functionid", "functionname"); ?>
+                  </select>
+				  </td>
             <td width="70" align="right" valign="top"></td>
             </tr>
 
@@ -334,11 +344,11 @@ em.error { color: black; }
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Remuneration</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
-			  <select name="st_ex_salary_{0}"  id="st_ex_salary_{0}" class="form" style="width:175px;">
+			  <select name="st_ex_salary_{0}"  id="st_ex_salary_{0}" class="required form" style="width:175px;">
                 <option value="" selected="selected" >-- Select Salary --</option>
-                <?php //echo $options = ListOptions("dup_salary", "salaryid", "salarytext"); ?>
+                <?php echo $options = ListOptions("dup_salary", "salaryid", "salaryname"); ?>
               </select></td>
-            <td width="70" align="right" valign="top"><a href="#_{0}" id="remove" >Remove</a> </td>
+            <td width="70" align="right" valign="top"></td>
             </tr>
 </textarea>
 
