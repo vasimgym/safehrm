@@ -219,7 +219,7 @@ em.error { color: black; }
             <td width="0" height="25" align="left" valign="top">
 			<select name="st_ex_industry_<?php echo $n; ?>" class="required form" id="st_ex_industry_<?php echo $n; ?>" style="width:175px;">
                     <option value="" selected="selected" >-- Select Industry --</option>
-                    <?php echo $options = ListOptions("dup_industry", "industryid", "industryname"); ?>
+                    <?php echo $options = ListOptions("dup_industry", "industryid", "industryname", $expresult['ex_industry']); ?>
                   </select></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
