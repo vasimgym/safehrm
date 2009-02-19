@@ -42,7 +42,7 @@ function ChkExists($tablename, $chkfield, $chkvalue, $errorvar="error_exists")
 	}
 }
 
-function ListOptions($tablename, $optionvaluefield, $optionhtmlfield)
+function ListOptions($tablename, $optionvaluefield, $optionhtmlfield, $selected="")
 {
 	$chkquery = "select * from ". $tablename;
 	$res = mysql_query($chkquery);
@@ -51,7 +51,11 @@ function ListOptions($tablename, $optionvaluefield, $optionhtmlfield)
 	{
 		$optval		= $result[ $optionvaluefield];
 		$opthtml	= $result[ $optionhtmlfield];
-		$str .= "<option value='".$optval."'> ". $opthtml . " </option>";
+		if ($optval == $selected)
+			$str .= "<option value='".$optval."' selected='selected'> ". $opthtml . " </option>";
+		else
+			$str .= "<option value='".$optval."'> ". $opthtml . " </option>";
+
 	}
 	return $str;
 
