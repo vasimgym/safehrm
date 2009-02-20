@@ -60,4 +60,47 @@ function ListOptions($tablename, $optionvaluefield, $optionhtmlfield, $selected=
 	return $str;
 
 }
+
+function coursetypes($pid, $select) {
+ 	
+ 	$course_ug = mysql_query("
+							SELECT id, coursename
+							FROM dup_coursetypes
+							WHERE pid ='$pid'
+							ORDER BY coursename"
+							);
+
+	while($row = mysql_fetch_array($course_ug)) {
+		$course_id		= $row['id']; 
+		$course_name	= $row['coursename'];		
+		if ($select==$course_id) {
+			echo '<option value="'.$course_id.'" selected="selected" >'.$course_name.'</option>';
+		} else {
+			echo '<option value="'.$course_id.'">'.$course_name.'</option>';
+		}
+	}
+ }
+
+
+
+ function Specializations($pid, $select) {
+ 	
+ 	$course_ug = mysql_query("
+							SELECT id, coursename
+							FROM dup_specialization
+							WHERE pid ='$pid'
+							ORDER BY coursename"
+							);
+
+	while($row = mysql_fetch_array($course_ug)) {
+		$course_id		= $row['id']; 
+		$course_name	= $row['coursename'];		
+		if ($select==$course_id) {
+			echo '<option value="'.$course_id.'" selected="selected" >'.$course_name.'</option>';
+		} else {
+			echo '<option value="'.$course_id.'">'.$course_name.'</option>';
+		}
+	}
+ }
+
 ?>
