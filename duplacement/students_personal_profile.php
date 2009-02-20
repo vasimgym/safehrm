@@ -6,8 +6,35 @@ if (empty($_SESSION['stUser'])) {
   	header('location:signin.php');	
 }
 
+$studentid = $_SESSION['stUserID'];
+
+$select = mysql_query("select * from dup_students where st_id='$studentid' ");
+$selectresult = mysql_fetch_array($select);
+
 include('studentheader.php');
 ?>
+<script type="text/javascript">
+// only for demo purposes
+$.validator.setDefaults({
+	submitHandler: function() {
+		signupForm.submit();
+	}
+});
+
+$().ready(function() {
+// validate the comment form when it is submitted
+$("#signupForm").validate();
+
+$("#st_dob").mask("9999-99-99");
+$("#st_mobile").mask("9999999999");
+$("#st_contact_no").mask("9999-9999999999");
+
+
+
+});
+
+</script>
+
 
         <div align="left" style="text-align:justify; float:left;">
         <div class="nav">
@@ -25,12 +52,13 @@ include('studentheader.php');
             <div class="blue" style="height:30px; background-image:url(images/nav-bar-table1.jpg); padding-left:10px; padding-right:10px; width:580px; float:left;"></div>
             <div style="background-image:url(images/nav-grads-bar.jpg); background-repeat:repeat-x; 
             padding-left:15px; padding-bottom:5px; padding-right:10px; padding-top:10px; width:575px; float:left;">
-            <table width="500" border="0" cellspacing="0" cellpadding="0">
+           <form action="" id="signupForm" method="post">
+		    <table width="500" border="0" cellspacing="0" cellpadding="0">
             <tr>
             <td width="150" height="25" align="left" valign="top">User Name</td>
             <td width="20" height="25" align="center" valign="top">:</td>
             <td width="0" height="25" align="left" valign="top">
-            <input name="name" type="text" class="form" id="user_name" value="saraswat-abhinav" readonly="readonly"/></td>
+            <input name="st_username" type="text" class="required form" id="st_username" value="<?php echo $selectresult['st_username']; ?>" readonly="readonly"/></td>
             </tr>
             <tr>
             <td width="150" height="10" align="left" valign="top"></td>
@@ -40,142 +68,38 @@ include('studentheader.php');
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>First Name</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><input name="fname" type="text" class="form" id="fname" value="Abhinav Saraswat"/></td>
+            <td width="0" height="25" align="left" valign="top"><input name="st_name" type="text" class="required form" id="st_name" value="<?php echo $selectresult['st_name']; ?>"/></td>
             </tr>
             <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Date of Birth</td>
             <td width="20" height="25" align="center" valign="top">:</td>
-            <td width="0" height="25" align="left" valign="top"><select name="dbdate" class="formi" id="dbdate">
-              <option value="0" selected>Date</option>
-                      <option value="1" >1</option>
-                      <option value="2" >2</option>
-                      <option value="3" >3</option>
-                      <option value="4" >4</option>
-                      <option value="5" >5</option>
-                      <option value="6" >6</option>
-                      <option value="7" >7</option>
-                      <option value="8" >8</option>
-                      <option value="9" >9</option>
-                      <option value="10" >10</option>
-                      <option value="11" >11</option>
-                      <option value="12" >12</option>
-                      <option value="13" >13</option>
-                      <option value="14" >14</option>
-                      <option value="15" >15</option>
-                      <option value="16" >16</option>
-                      <option value="17" >17</option>
-                      <option value="18" >18</option>
-                      <option value="19" >19</option>
-                      <option value="20" >20</option>
-                      <option value="21" >21</option>
-                      <option value="22" >22</option>
-                      <option value="24" >24</option>
-                      <option value="25" >25</option>
-                      <option value="26" >26</option>
-                      <option value="27" >27</option>
-                      <option value="28" >28</option>
-                      <option value="29" >29</option>
-                      <option value="30" >30</option>
-                      <option value="31" >31</option>
-                </select>
-                    <select name="dbmonth" class="formi" id="select18">
-                      <option value="0" selected>Month</option>
-                      <option value="1" >Jan</option>
-                      <option value="2" >Feb</option>
-                      <option value="3" >mar</option>
-                      <option value="4" >Apr</option>
-                      <option value="5" >May</option>
-                      <option value="6" >June</option>
-                      <option value="7" >July</option>
-                      <option value="8" >Aug</option>
-                      <option value="9" >Sep</option>
-                      <option value="10" >Oct</option>
-                      <option value="11" >Nov</option>
-                      <option value="12" >Dec</option>
-                </select>
-                    <select name="dbyear" class="formi" id="select19">
-                      <option value="0" selected>Year</option>
-                      <option value="1950" >1950</option>
-                      <option value="1951" >1951</option>
-                      <option value="1952" >1952</option>
-                      <option value="1953" >1953</option>
-                      <option value="1954" >1954</option>
-                      <option value="1955" >1955</option>
-                      <option value="1956" >1956</option>
-                      <option value="1957" >1957</option>
-                      <option value="1958" >1958</option>
-                      <option value="1959" >1959</option>
-                      <option value="1960" >1960</option>
-                      <option value="1961" >1961</option>
-                      <option value="1962" >1962</option>
-                      <option value="1963" >1963</option>
-                      <option value="1964" >1964</option>
-                      <option value="1965" >1965</option>
-                      <option value="1966" >1966</option>
-                      <option value="1967" >1967</option>
-                      <option value="1968" >1968</option>
-                      <option value="1969" >1969</option>
-                      <option value="1970" >1970</option>
-                      <option value="1971" >1971</option>
-                      <option value="1972" >1972</option>
-                      <option value="1973" >1973</option>
-                      <option value="1974" >1974</option>
-                      <option value="1975" >1975</option>
-                      <option value="1976" >1976</option>
-                      <option value="1977" >1977</option>
-                      <option value="1978" >1978</option>
-                      <option value="1979" >1979</option>
-                      <option value="1980" >1980</option>
-                      <option value="1981" >1981</option>
-                      <option value="1982" >1982</option>
-                      <option value="1983" >1983</option>
-                      <option value="1984" >1984</option>
-                      <option value="1985" >1985</option>
-                      <option value="1986" >1986</option>
-                      <option value="1987" >1987</option>
-                      <option value="1988" >1988</option>
-                      <option value="1989" >1989</option>
-                      <option value="1990" >1990</option>
-                      <option value="1991" >1991</option>
-              </select></td>
+            <td width="0" height="25" align="left" valign="top"><input type="text" id="st_dob" name="st_dob" value="<?php echo $selectresult['st_dob']; ?>" class="required form"  /></td>
               </tr>
               <tr>
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Location (City)</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
-              <select name="dbmonth" class="formi" id="select18" style="width:172px;">
+              <select name="st_location" class="required form" id="st_location" style="width:172px;">
               <option value="0" selected>-- Location --</option>
-              <option value="1" >Delhi</option>
-              <option value="2" >Gurgaon</option>
-              <option value="3" >Noida</option>
-              <option value="4" >Banglore</option>
-              <option value="5" >Ahemdabad</option>
-              <option value="6" >Hyderabad</option>
-              <option value="7" >Chennai</option>
-              <option value="8" >Chandigarh</option>
-              <option value="9" >Sep</option>
-              <option value="10" >Oct</option>
-              <option value="11" >Nov</option>
-              <option value="12" >Dec</option>
+             <?php echo $options = ListOptions("dup_location", "locationid", "locationname", $selectresult['st_location']); ?>
               </select></td>
               </tr>
               <tr>
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>E-Mail Id</td>
               <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><input name="location" type="text" class="form" id="location" value="abhinav@live.com"/></td>
+              <td width="0" height="25" align="left" valign="top"><input name="st_email" type="text" class="form" id="st_email" value="<?php echo $selectresult['st_email']; ?>"/></td>
               </tr>
               <tr>
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Mobile No.</td>
               <td width="20" height="25" align="center" valign="top">:</td>
-              <td width="0" height="25" align="left" valign="top"><input name="name" type="text" class="form" id="user_name" value="09898989898"/></td>
+              <td width="0" height="25" align="left" valign="top"><input name="st_mobile" type="text" class="form" id="st_mobile" value="<?php echo $selectresult['st_mobile']; ?>"/></td>
               </tr>
               <tr>
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Contact No.</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
-              <input name="name" type="text" class="formi" id="user_name" value="+91" maxlength="3" style="width:25px;"/>
-              <input name="name" type="text" class="formi" id="user_name" value="5738" maxlength="4" style="width:32px;"/>
-              <input name="name" type="text" class="formi" id="user_name" value="26263030" maxlength="5" style="width:96px;"/></td>
+              <input name="st_contact_no" type="text" class="required form" id="st_contact_no" value="<?php echo $selectresult['st_contact_no']; ?>"  />
+              </td>
               </tr>
               <tr>
               <td width="150" height="15" align="left" valign="top"></td>
@@ -186,7 +110,7 @@ include('studentheader.php');
         	  <td width="150" height="25" align="left" valign="top"><strong>UG Qualification</strong></td>
         	  <td height="25" align="center" valign="top">:</td>
         	  <td width="0" height="25" align="left" valign="top">
-              <select name="Work_experience" class="formi" id="workexp" style="width:172px;">
+              <select name="st_ug_qualification" class="formi" id="workexp" style="width:172px;">
 	          <option value="" selected="selected" >-- UG Qualification --</option>
     	      <option value="1"  >Not Pursuing Graduation</option>
 	          <option value="2"  >B.A</option>
@@ -211,7 +135,7 @@ include('studentheader.php');
     	      <td width="150" height="25" align="left" valign="top">Specialization</td>
 	          <td height="25" align="center" valign="top">:</td>
 	          <td width="0" height="25" align="left" valign="top">
-              <select name="Work_experience2" class="formi" id="Work_experience" style="width:172px;">
+              <select name="st_ug_specilization" class="formi" id="Work_experience" style="width:172px;">
               <option value="" selected="selected" >-- Specialization --</option>
               <option value="1"  >No any specialization</option>
               <option value="1"  >Arts & Humanities</option>
@@ -238,18 +162,18 @@ include('studentheader.php');
 	          <tr>
 	          <td width="150" height="25" align="left" valign="top">University </td>
 	          <td height="25" align="center" valign="top"> :</td>
-	          <td width="0" height="25" align="left" valign="top"><input name="univ" type="text" class="form" id="univ" /></td>
+	          <td width="0" height="25" align="left" valign="top"><input name="st_ug_univ" type="text" class="form" id="st_ug_univ" /></td>
 	          </tr>
 	          <tr>
 	          <td width="150" height="25" align="left" valign="top">College </td>
     	      <td height="25" align="center" valign="top"> :</td>
-	          <td width="0" height="25" align="left" valign="top"><input name="coll" type="text" class="form" id="coll" /></td>
+	          <td width="0" height="25" align="left" valign="top"><input name="st_ug_college" type="text" class="form" id="st_ug_college" /></td>
 	          </tr>
 	          <tr>
 	          <td width="150" height="25" align="left" valign="top">Year of passing</td>
 	          <td height="25" align="center" valign="top">:</td>
   	          <td width="0" height="25" align="left" valign="top">
-    	      <select name="Work_experience" class="formi" id="workexp">
+    	      <select name="st_ug_passyear" class="formi" id="workexp">
 			  <option value="2012" >2012</option> 
 			  <option value="2011" >2011</option> 
 			  <option value="2010" >2010</option> 
@@ -334,7 +258,7 @@ include('studentheader.php');
         <td width="150" height="25" align="left" valign="top"><strong>PG Qualification</strong></td>
         <td height="25" align="center" valign="top">:</td>
         <td width="0" height="25" align="left" valign="top">
-        <select name="Work_experience" class="formi" id="workexp" style="width:172px;">
+        <select name="st_pg_qualification" class="formi" id="workexp" style="width:172px;">
               <option value="" selected="selected" >-- PG Qualification --</option>
               <option value="0"  >Not Pursuing Graduation</option>
               <option value="1"  >CA</option> 
@@ -362,7 +286,7 @@ include('studentheader.php');
         <td width="150" height="25" align="left" valign="top">Specialization</td>
         <td height="25" align="center" valign="top">:</td>
         <td width="0" height="25" align="left" valign="top">
-        <select name="Work_experience" class="formi" id="workexp" style="width:172px;">
+        <select name="st_pg_specilization" class="formi" id="workexp" style="width:172px;">
               <option value="" selected="selected" >-- Specialization --</option>
 			  <option value="1"  >No any specialization</option> 
 			  <option value="1"  >Arts & Humanities</option> 
@@ -389,17 +313,17 @@ include('studentheader.php');
         <tr>
         <td width="150" height="25" align="left" valign="top">University </td>
         <td height="25" align="center" valign="top"> :</td>
-        <td width="0" height="25" align="left" valign="top"><input name="univ1" type="text" class="form" id="univ1" /></td>
+        <td width="0" height="25" align="left" valign="top"><input name="st_pg_univ" type="text" class="form" id="st_pg_univ" /></td>
         </tr>
         <tr>
         <td width="150" height="25" align="left" valign="top">College </td>
         <td height="25" align="center" valign="top"> :</td>
-        <td width="0" height="25" align="left" valign="top"><input name="coll1" type="text" class="form" id="coll1" /></td>
+        <td width="0" height="25" align="left" valign="top"><input name="st_pg_college" type="text" class="form" id="st_pg_college" /></td>
         </tr>
         <tr>
         <td width="150" height="25" align="left" valign="top">Year of passing</td>
         <td height="25" align="center" valign="top">:</td>
-        <td width="0" height="25" align="left" valign="top"><select name="Work_experience" class="formi" id="workexp">
+        <td width="0" height="25" align="left" valign="top"><select name="st_pg_passyear" class="formi" id="workexp">
 			  <option value="2012" >2012</option> 
 			  <option value="2011" >2011</option> 
 			  <option value="2010" >2010</option> 
@@ -486,6 +410,7 @@ include('studentheader.php');
         <td width="0" height="35" align="left" valign="top"><input type="image" src="images/du-btn-submit.jpg" name="submit" id="submit" value="Submit" /></td>
         </tr>
         </table>
+		 </form>
               <br />
               <br />
               <br />
