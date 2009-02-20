@@ -130,7 +130,11 @@ $().ready(function() {
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Location (City)</td>
 	  <td width="20" height="25" align="left" valign="top">:</td>
-	  <td width="450" height="25" align="left" valign="top"><input name="st_location" type="text" class="form" id="st_location" size="27" value="<?php echo $st_location; ?>"/></td>
+	  <td width="450" height="25" align="left" valign="top">
+	  <select name="st_location" class="required form" id="st_location" style="width:172px;">
+       <option value="0" selected>-- Location --</option>
+        <?php echo $options = ListOptions("dup_location", "locationid", "locationname", $st_location); ?>
+      </select>
 	  </tr>
 	  <tr>
 	  <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Mobile No.</td>

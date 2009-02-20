@@ -7,6 +7,7 @@
 <script src="script/function.js" type="text/javascript"></script>
 <script src="jquery/lib/jquery.js" type="text/javascript"></script>
 <script src="jquery/jquery.validate.js" type="text/javascript"></script>
+<script src="jquery/jquery.maskedinput.js" type="text/javascript"></script>
 </head>
   <body>
     <center>
