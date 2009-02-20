@@ -9,41 +9,41 @@ if (empty($_SESSION['adminID']))
 }
 
 if (!empty($_POST['edit'])) {
-	$salaryname  		= trim($_POST['salaryname']); 
-	$salarystatus  	= trim($_POST['salarystatus']);
+	$coursename  = trim($_POST['coursename']); 
+	$pid  	= trim($_POST['pid']);
 	
 	$editid	= trim($_POST['editid']);
 	
-	$query	=  "update dup_salary  set
-					salaryname = '$salaryname', salarystatus = '$salarystatus' where salaryid = '$editid'";
+	$query	=  "update dup_specialization  set
+					coursename = '$coursename', pid = '$pid' where id = '$editid'";
 	$eres = mysql_query($query);
 	if (!empty($eres))
-		triggerMessage("admin_create_ind", "Account edited successfully!");	
+		triggerMessage("admin_specialization", "Account edited successfully!");
+		header("location:manage_specialization.php");
 }
 
 
 if (!empty($_POST['add'])) {
-	$salaryname  		= trim($_POST['salaryname']); 
-	$salarystatus  	= trim($_POST['salarystatus']);
+	$coursename  = trim($_POST['coursename']); 
+	$pid  	= trim($_POST['pid']);
 	
-	if (!empty($salaryname))
+	if (!empty($coursename))
 	{	
-		if ($cn = ChkExists("dup_salary", "salaryname", $salaryname, "admin_create_ind") == 0)
-		{
-			$query	=  "INSERT INTO dup_salary ( salaryid, salaryname, salarystatus)							  
+			$query	=  "INSERT INTO dup_specialization ( id, coursename, pid)							  
 									VALUES 
-									('','$salaryname','$salarystatus')";
+									('','$coursename','$pid')";
 			$res = mysql_query($query);
 			if (!empty($res))
-				triggerMessage("admin_create_ind", "Created salary Successfully!");
-		}
-	} else { triggerMessage("admin_create_ind", "Please Enter salary description!");}
+				triggerMessage("admin_specialization", "Created Record Successfully!");
+				header("location:manage_specialization.php");
+	
+	} else { triggerMessage("admin_specialization", "Please Enter Description!");}
 }
 
 if ($_GET['act'] == "edit")
 {
 	$editid = $_GET['id'];
-	$esql = mysql_query("select * from dup_salary where salaryid = '$editid' limit 1");
+	$esql = mysql_query("select * from dup_specialization where id = '$editid' limit 1");
 	$eresult = mysql_fetch_array($esql);
 }
 ?>
@@ -62,7 +62,7 @@ if ($_GET['act'] == "edit")
     <table width="330" border="0" cellspacing="0" cellpadding="0">
   	<tr>
     <td align="left" valign="top"><strong><img src="../images/admin-star.jpg" alt="star" /></strong></td>
-    <td height="25" align="left" valign="top" nowrap="nowrap"><span class="blue"><strong> CREATE RENUMERATION </strong></span></td>
+    <td height="25" align="left" valign="top" nowrap="nowrap"><span class="blue"><strong> CREATE SPECIALIAZATION </strong></span></td>
     <td height="25" align="left" valign="top"></td>
     <td height="25" align="left" valign="top"></td>
   	</tr>
@@ -77,16 +77,16 @@ if ($_GET['act'] == "edit")
     <td width="110" height="25" align="left" valign="top">Description</td>
     <td width="20" height="25" align="left" valign="top">:</td>
     <td width="170" height="25" align="left" valign="top">
-    <input name="salaryname" type="text" class="form" id="salaryname" size="27"  value="<?php echo $eresult['salaryname'];?>"/></td>
+    <input name="coursename" type="text" class="form" id="coursename" size="27"  value="<?php echo $eresult['coursename'];?>"/></td>
   	</tr>
   	<tr>
     <td width="30" align="left" valign="top"></td>
-    <td width="110" height="25" align="left" valign="top">Status</td>
+    <td width="110" height="25" align="left" valign="top">Type</td>
     <td width="20" height="25" align="left" valign="top">:</td>
     <td width="170" height="25" align="left" valign="top">
-    <select name="salarystatus" class="form" id="status">
-    <option value="active" <?php if ($eresult['salarystatus'] == "active") { echo "selected"; } ?>>Active</option>
-	<option value="inactive" <?php if ($eresult['salarystatus'] == "inactive") { echo "selected"; } ?>>Inactive</option>
+    <select name="pid" class="form" id="status">
+    <option value="1" <?php if ($eresult['pid'] == 1) { echo "selected"; } ?>>UG Course</option>
+	<option value="2" <?php if ($eresult['pid'] == 2) { echo "selected"; } ?>>PG Course</option>
     </select></td>
   	</tr>
   	<tr>

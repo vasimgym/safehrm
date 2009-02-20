@@ -97,6 +97,53 @@
     </div>
 
 	</div>
+	
+	
+	<div style="height:20px;"></div>
+
+	<div style="width:530px; height:55px; padding-left:40px;">
+
+	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
+   	  
+      <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD COURSE</strong></span><br />
+      
+      <a href="add_course.php" class="linkA">Create or manage, admin<br />and user panel.</a>
+
+    </div>
+
+	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
+
+   	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE COURSES</strong></span><br />
+      
+      <a href="manage_course.php" class="linkA">Create or manage, admin<br />and user panel.</a>
+
+    </div>
+
+	</div>
+	
+	
+	<div style="height:20px;"></div>
+
+	<div style="width:530px; height:55px; padding-left:40px;">
+
+	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
+   	  
+      <div class="linkA" style="width:250px; height:55px; float:left;"><span class="blue"><strong>ADD SPECIALIAZATION</strong></span><br />
+      
+      <a href="add_specialization.php" class="linkA">Create or manage, admin<br />and user panel.</a>
+
+    </div>
+
+	  <div style="width:25px; height:55px; float:left;"><img src="../images/admin-star.jpg" alt="star" width="16" height="16" /></div>
+
+   	  <div class="linkA" style="width:200px; height:55px; float:left;"><span class="blue"><strong>MANAGE SPECIALIAZATIONS</strong></span><br />
+      
+      <a href="manage_specialization.php" class="linkA">Create or manage, admin<br />and user panel.</a>
+
+    </div>
+
+	</div>
+
 
 
 	<div style="height:20px;"></div>
