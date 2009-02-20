@@ -7,6 +7,17 @@ if (empty($_SESSION['stUser'])) {
 }
 
 $studentid = $_SESSION['stUserID'];
+
+if($_GET['act'] == "remove" )
+{
+	if (!empty($_GET['number']))
+	{
+		$number = $_GET['number'];
+		mysql_query("delete from dup_studentexp where ex_st_id = '$studentid' and ex_number='$number'");
+		header("location:students_edit_profile.php");
+	}
+}
+
 if($_POST['editprofile'])
 {
 	$st_keyskills 		= $_POST['st_keyskills'];
@@ -270,7 +281,7 @@ em.error { color: black; }
                 <option value="" selected="selected" >-- Select Salary --</option>
                 <?php echo $options = ListOptions("dup_salary", "salaryid", "salaryname", $expresult['ex_remuneration']); ?>
               </select></td>
-            <td width="70" align="right" valign="top"><a href="#_{0}" id="remove" >Remove</a> </td>
+            <td width="70" align="right" valign="top"><a href="students_edit_profile.php?number=<?php echo $n; ?>&act=remove">Remove</a></td>
             </tr>
 			
 			<?php
@@ -295,14 +306,25 @@ em.error { color: black; }
               <td width="0" height="10" align="left" valign="top"></td>
               <td width="70" align="right" valign="top"></td>
               </tr>
-				<tr  colspan="4"><td><img id="loading" src="images/loading.gif" style="display:none;"></td></tr>
+			
+			<?php if (!empty($selectresult['st_resumepath'])) { ?>	
+			<tr>
+              <td width="150" height="25" align="left" valign="top"><strong></strong></td>
+              <td width="20" height="25" align="center" valign="top"></td>
+              <td width="0" height="25" align="left" valign="top">
+			  <a href="downloadresume.php?file=<?php echo $selectresult['st_resumepath'];?>" target="_blank">view</a>
+			 </td>
+              <td width="70" align="right" valign="top"></td>
+              </tr>
+			<?php } ?>
+				
 				
               <tr>
               <td width="150" height="25" align="left" valign="top"><strong>Upload Resume</strong></td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top">
 			  <input id="st_resume" type="file" size="25" name="st_resume">
-			 <!-- <input type="image" src="images/du-btn-upload.jpg" id="buttonUpload" /> --></td>
+			 </td>
               <td width="70" align="right" valign="top"></td>
               </tr>
               <tr>
@@ -385,7 +407,7 @@ em.error { color: black; }
                 <option value="" selected="selected" >-- Select Salary --</option>
                 <?php echo $options = ListOptions("dup_salary", "salaryid", "salaryname"); ?>
               </select></td>
-            <td width="70" align="right" valign="top"></td>
+            <td width="70" align="right" valign="top"><!--<a href="students_edit_profile.php?refresh">Remove</a> --></td>
             </tr>
 </textarea>
 
