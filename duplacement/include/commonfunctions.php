@@ -61,6 +61,22 @@ function ListOptions($tablename, $optionvaluefield, $optionhtmlfield, $selected=
 
 }
 
+// show related selected value
+
+function ShowValue($tablename, $fieldid, $returnfield, $selected="")
+{
+	$chkquery = "select * from ". $tablename . " where " .$fieldid . " = '". $selected ."'" ;
+	$res = mysql_query($chkquery);
+	$result = mysql_fetch_array($res);
+	$str = "";
+	$str	= $result[ $returnfield];
+
+	return $str;
+
+}
+
+
+
 function coursetypes($pid, $select) {
  	
  	$course_ug = mysql_query("

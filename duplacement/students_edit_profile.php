@@ -44,6 +44,10 @@ if($_POST['editprofile'])
 			if ($size <= 1024) {
 				if (!move_uploaded_file($tmp_name,$path)) {
 					triggerMessage("err_student", "Error: upload Failed!");	
+				} else {
+					$sqlr = "UPDATE `dup_students` SET `st_resumepath` = '$st_resumepath', `st_resume_modified` = NOW()	WHERE	`st_id` = '".$_SESSION['stUserID']."' LIMIT 1";
+					$resr = mysql_query($sqlr);
+	
 				}
 			}
 		}
@@ -53,8 +57,7 @@ if($_POST['editprofile'])
 	$sql1 = "UPDATE `dup_students` SET 
 			`st_keyskills` = '$st_keyskills', 
 			`st_resumeheadline` = '$st_resumeheadline',
-			`st_textresume` = '$st_textresume',
-			`st_resumepath` = '$st_resumepath'		
+			`st_textresume` = '$st_textresume'					
 	WHERE	`st_id` = '".$_SESSION['stUserID']."' LIMIT 1";
 	$res1 = mysql_query($sql1);
 	

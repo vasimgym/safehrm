@@ -133,7 +133,7 @@ $().ready(function() {
 	  <td width="450" height="25" align="left" valign="top">
 	  <select name="st_location" class="required form" id="st_location" style="width:172px;">
        <option value="0" selected>-- Location --</option>
-        <?php echo $options = ListOptions("dup_location", "locationid", "locationname", $st_location); ?>
+        <?php echo $options = ListOptions("dup_location", "locationid", "name", $st_location); ?>
       </select>
 	  </tr>
 	  <tr>
