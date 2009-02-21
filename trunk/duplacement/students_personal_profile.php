@@ -27,6 +27,9 @@ if(!empty($_POST['editaction']))
     $st_pg_univ = $_POST['st_pg_univ'];
     $st_pg_college = $_POST['st_pg_college'];
     $st_pg_passyear = $_POST['st_pg_passyear'];
+	$st_address = $_POST['st_address'];
+	$st_gender = $_POST['st_gender'];
+	
 	
 	$esql = "update dup_students set 
 			`st_name` = '$st_name',
@@ -38,13 +41,14 @@ if(!empty($_POST['editaction']))
 			`st_ug_specilization` = '$st_ug_specilization',
 			`st_ug_univ` = '$st_ug_univ',
 			`st_ug_college` = '$st_ug_college',	
-			`st_ug_passyear` = '$st_ug_passyear',
-			
+			`st_ug_passyear` = '$st_ug_passyear',			
 			`st_pg_qualification` = '$st_pg_qualification', 	
 			`st_pg_specilization` = '$st_pg_specilization',
 			`st_pg_univ` = '$st_pg_univ',
 			`st_pg_college` = '$st_pg_college',	
-			`st_pg_passyear` = '$st_pg_passyear' 	
+			`st_pg_passyear` = '$st_pg_passyear',
+			`st_address`	= '$st_address',
+			`st_gender` = '$st_gender'
 	where  st_id='$studentid'";
 	mysql_query($esql);
 }
@@ -117,6 +121,17 @@ $("#st_contact_no").mask("9999-9999999999");
             <td width="0" height="25" align="left" valign="top"><input name="st_name" type="text" class="required form" id="st_name" value="<?php echo $selectresult['st_name']; ?>"/></td>
             </tr>
             <tr>
+              <td height="25" align="left" valign="top"><span class="star">* </span>Gender</td>
+              <td height="25" align="center" valign="top">:</td>
+              <td height="25" align="left" valign="top">
+			  <select id="st_gender" name="st_gender" class="required form">
+			  <option value="">--select--</option>
+			  <option value="Male" <?php if ($selectresult['st_gender'] == "Male") echo "selected"; ?>>Male</option>
+			  <option value="Female" <?php if ($selectresult['st_gender'] == "Female") echo "selected"; ?>>Female</option>
+			  </select>
+			  </td>
+            </tr>
+            <tr>
             <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Date of Birth</td>
             <td width="20" height="25" align="center" valign="top">:</td>
             <td width="0" height="25" align="left" valign="top"><input type="text" id="st_dob" name="st_dob" value="<?php if ($selectresult['st_dob'] != '0000-00-00') echo $selectresult['st_dob']; ?>" class="required form"  /></td>
@@ -144,6 +159,12 @@ $("#st_contact_no").mask("9999-9999999999");
               <td width="150" height="25" align="left" valign="top"><span class="star">* </span>Contact No.</td>
               <td width="20" height="25" align="center" valign="top">:</td>
               <td width="0" height="25" align="left" valign="top"><input name="st_contact_no" type="text" class="required form" id="st_contact_no" value="<?php echo $selectresult['st_contact_no']; ?>"  size="30" /></td>
+              </tr>
+              <tr>
+                <td height="25" align="left" valign="top"><span class="star">* </span>Address</td>
+                <td height="25" align="center" valign="top">:</td>
+                <td height="25" align="left" valign="top">
+				<textarea name="st_address" type="text" class="required form" id="st_address" cols="60" rows="7"><?php echo $selectresult['st_address']; ?></textarea></td>
               </tr>
               <tr>
               <td width="150" height="15" align="left" valign="top"></td>
