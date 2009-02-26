@@ -224,7 +224,7 @@ $("#st_contact_no").mask("9999-9999999999");
         <select name="st_pg_qualification" class="formi" id="st_pg_qualification" style="width:172px;">
               <option value="" selected="selected" >-- PG Qualification --</option>
               <option value="0"  >Not Pursuing Graduation</option>
-               <?php coursetypes("2", $selectresult['st_ug_qualification']); ?>
+               <?php coursetypes("2", $selectresult['st_pg_qualification']); ?>
             </select>        </td>
         </tr>
         <tr>
