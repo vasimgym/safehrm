@@ -47,7 +47,7 @@ include("header.php");?>
   	<tr>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle">Keyword</td>
-    <td height="30" align="left" valign="middle"><input name="key" type="text" class="form" id="key" /></td>
+    <td height="30" align="left" valign="middle"><input name="st_keyskills" type="text" class="form" id="st_keyskills" /></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="center" valign="middle"></td>
@@ -56,25 +56,9 @@ include("header.php");?>
   	<tr>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle">UG Qualification</td>
-    <td height="30" align="left" valign="middle"><select id="ugcourse" name="UGCOURSE" style="width:175px;" class="form">
-      <option value="-1" selected="selected" >-- UG Qualification --</option>
-      <option value="1"  >Not Pursuing</option>
-      <option value="2"  >B.A</option>
-      <option value="3"  >B.Arch</option>
-      <option value="4"  >BCA</option>
-      <option value="5"  >B.B.A</option>
-      <option value="6"  >B.Com</option>
-      <option value="7"  >B.Ed</option>
-      <option value="8"  >BDS</option>
-      <option value="9"  >BHM</option>
-      <option value="10"  >B.Pharma</option>
-      <option value="11"  >B.Sc</option>
-      <option value="12"  >B.Tech/B.E.</option>
-      <option value="13"  >LLB</option>
-      <option value="14"  >MBBS</option>
-      <option value="15"  >Diploma</option>
-      <option value="16"  >BVSC</option>
-      <option value="9999"  >Other</option>
+    <td height="30" align="left" valign="middle"><select name="st_ug_qualification" class="formi" id="select" style="width:172px;">
+      <option value="" selected="selected" >-- UG Qualification --</option>
+      <?php coursetypes("1", $selectresult['st_ug_qualification']); ?>
     </select></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle"></td>
@@ -84,7 +68,7 @@ include("header.php");?>
   	<tr>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle">:: College</td>
-    <td height="30" align="left" valign="middle"><input name="inst" type="text" class="form" id="inst" /></td>
+    <td height="30" align="left" valign="middle"><input name="st_ug_college" type="text" class="form" id="st_ug_college" /></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="center" valign="middle"></td>
@@ -93,7 +77,7 @@ include("header.php");?>
   	<tr>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle">:: Year of Passing</td>
-    <td height="30" align="left" valign="middle"><input name="yop" type="text" class="form" id="yop" /></td>
+    <td height="30" align="left" valign="middle"><input name="st_ug_passyear" type="text" class="form" id="st_ug_passyear" /></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="center" valign="middle"></td>
@@ -102,28 +86,10 @@ include("header.php");?>
   	<tr>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle">PG Qualification</td>
-    <td height="30" align="left" valign="middle">
-    <select id="pgcourse" name=PGCOURSE  class="form" style="width:175px;">
-      <option value="-1" selected >-- PG Qualification --</option>
-      <option value="1"  >CA</option>
-      <option value="2"  >CS</option>
-      <option value="3"  >ICWA</option>
-      <option value="4"  >Integrated PG</option>
-      <option value="5"  >LLM</option>
-      <option value="6"  >M.A</option>
-      <option value="7"  >M.Arch</option>
-      <option value="8"  >M.Com</option>
-      <option value="9"  >M.Ed</option>
-      <option value="10"  >M.Pharma</option>
-      <option value="11"  >M.Sc</option>
-      <option value="12"  >M.Tech</option>
-      <option value="13"  >MBA/PGDM</option>
-      <option value="14"  >MCA</option>
-      <option value="15"  >MS</option>
-      <option value="16"  >PG Diploma</option>
-      <option value="17"  >MVSC</option>
-      <option value="18"  >MCM</option>
-      <option value="9999"  >Other</option>
+    <td height="30" align="left" valign="middle"><select name="st_pg_qualification" class="formi" id="st_pg_qualification" style="width:172px;">
+      <option value="" selected="selected" >-- PG Qualification --</option>
+      <option value="0"  >Not Pursuing Graduation</option>
+      <?php coursetypes("2", $selectresult['st_ug_qualification']); ?>
     </select></td>
     <td height="30" align="left" valign="middle"></td>
     <td height="30" align="left" valign="middle"></td>
