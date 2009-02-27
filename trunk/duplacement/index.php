@@ -52,7 +52,7 @@ function MM_swapImage() { //v3.0
 
 	<div style="width:770px; height:500px; margin-top:10px; background-image:url(images/bg1-main-mid.jpg); background-repeat:repeat-x;" align="left">
    	  <div style="float:left; width:8px; height:102px; background-image:url(images/bg1-main-left.jpg); background-repeat:repeat-x;"></div>
-		<div style="width:355px; float:left; padding-top:10px;">
+		<!--<div style="width:355px; float:left; padding-top:10px;">
           <div style="width:65px; padding-left:10px; line-height:24px; float:left;"><br />
             <a href="#"><span class="linkze">apply now</span></a><br />
             <a href="#"><span class="linkze">apply now</span></a><br />
@@ -80,9 +80,10 @@ function MM_swapImage() { //v3.0
             <span class="nam">Future Genrali (Team Leader)</span><br />          
             <span class="nam">Kotak Securitis (CRM) </span><br />
           </div>
-        </div>
+        </div> -->
+		<?php include("joblisting.php"); ?>
 	  <div style="width:4px; height:500px; float:left; background-image:url(images/bg1-main-midbar.jpg); background-repeat:no-repeat;"></div>
-	<div style="width:395px; float:left; padding-top:10px;">
+	<!--<div style="width:395px; float:left; padding-top:10px;">
         <div style="width:55px; padding-left:30px; line-height:24px; float:left;"><br />
           <a href="#"><span class="linkze">hire now</span></a><br />
           <a href="#"><span class="linkze">hire now</span></a><br />
@@ -112,7 +113,8 @@ function MM_swapImage() { //v3.0
 			<span class="nam">Soma Nand</span><br />
 			<span class="nam">Swaraj Kamte</span><br />
         </div>
-      </div>
+      </div> -->
+	  <?php include("internslisting.php"); ?>
 
    	<div style="float:right; width:8px; height:102px; background-image:url(images/bg1-main-right.jpg); background-repeat:repeat-x;"></div>
     </div>
