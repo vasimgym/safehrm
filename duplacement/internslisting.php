@@ -1,31 +1,31 @@
+<?php
+include('include/config.php');
+$sql2 = "select * from dup_students ORDER BY RAND() limit 10 ";
+$res3 = mysql_query($sql2);
+$res4 = mysql_query($sql2);
+
+?>
 <div style="width:395px; float:left; padding-top:10px;">
         <div style="width:55px; padding-left:30px; line-height:24px; float:left;"><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
+          <?php while( $iresult = mysql_fetch_array($res3)) 
+		  {	
+		  	  	$st_id = $iresult['st_id'];	
+					  	
+		  ?>
+		  <a href="viewstudentdetails.php?id=<?php echo $st_id; ?>"><span class="linkze">hire now</span></a><br />
+          <?php } ?>
         </div>
         <div style="width:300px; padding-left:10px; line-height:24px; float:left;">
 			<strong>INTERNS FOR HIRE</strong><br />
-			<span class="nam">Mayank Aggarwal,</span> Graduate in Commerce<br />
-			<span class="nam">Ashish Tiwari,</span> Completed masters in Botany<br />
-			<span class="nam">Vindo Dua,</span> MBA from IIPM, hyderabad<br />
-			<span class="nam">Sweta kwatra,</span> MBA from Banasthali Vidyapeeth<br />
-			<span class="nam">Ganpat Apte,</span> M.Com from CCS University<br />
-			<span class="nam">Mohan Agashe,</span> M.Sc. Organic Chemistry<br />
-			<span class="nam">Ankita Jain</span><br />
-			<span class="nam">Minkesh Atyanand</span><br />
-			<span class="nam">Himanshu Kumar </span><br />
-			<span class="nam">Sharavan Aggarwal</span><br />
-			<span class="nam">Soma Nand</span><br />
-			<span class="nam">Swaraj Kamte</span><br />
+		<?php while( $iresult2 = mysql_fetch_array($res4)) 
+		  {	
+		  	  	$st_name 		= $iresult2['st_name'];
+				$st_location 	= $iresult2['st_location'];
+				
+				 		  	
+		  ?>
+			<span class="nam"><?php echo $st_name; ?>,</span> <?php echo $st_location; ?><br />
+		<?php } ?>
+			
         </div>
       </div>
