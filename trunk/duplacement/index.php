@@ -52,69 +52,9 @@ function MM_swapImage() { //v3.0
 
 	<div style="width:770px; height:500px; margin-top:10px; background-image:url(images/bg1-main-mid.jpg); background-repeat:repeat-x;" align="left">
    	  <div style="float:left; width:8px; height:102px; background-image:url(images/bg1-main-left.jpg); background-repeat:repeat-x;"></div>
-		<!--<div style="width:355px; float:left; padding-top:10px;">
-          <div style="width:65px; padding-left:10px; line-height:24px; float:left;"><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-            <a href="#"><span class="linkze">apply now</span></a><br />
-          </div>
-          <div style="width:270px; padding-left:10px; line-height:24px; float:left;">
-			<strong>JOBS FOR CANDIDATE</strong><br />
-            <span class="nam">Future Genrali (Team Leader),</span> Gurgaon<br />
-            <span class="nam">Kotak Securities (CRM),</span> Greater Noida<br />
-            <span class="nam">Avsarr Quest Pvt Ltd (FMCG),</span> Banglore<br />
-            <span class="nam">Future Genrali (Team Leader)</span><br />
-            <span class="nam">Avsarr Quest Pvt Ltd (FMCG),</span> New Delhi<br />
-            <span class="nam">Future Genrali (Team Leader),</span> Gurgaon<br />
-            <span class="nam">Future Genrali (Team Leader),</span> Gurgaon<br />
-            <span class="nam">Kotak Securities (CRM),</span> Greater Noida<br />
-            <span class="nam">Avsarr Quest Pvt Ltd (FMCG),</span> Banglore<br />
-            <span class="nam">Future Genrali (Team Leader)</span><br />          
-            <span class="nam">Kotak Securitis (CRM) </span><br />
-          </div>
-        </div> -->
 		<?php include("joblisting.php"); ?>
 	  <div style="width:4px; height:500px; float:left; background-image:url(images/bg1-main-midbar.jpg); background-repeat:no-repeat;"></div>
-	<!--<div style="width:395px; float:left; padding-top:10px;">
-        <div style="width:55px; padding-left:30px; line-height:24px; float:left;"><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-          <a href="#"><span class="linkze">hire now</span></a><br />
-        </div>
-        <div style="width:300px; padding-left:10px; line-height:24px; float:left;">
-			<strong>INTERNS FOR HIRE</strong><br />
-			<span class="nam">Mayank Aggarwal,</span> Graduate in Commerce<br />
-			<span class="nam">Ashish Tiwari,</span> Completed masters in Botany<br />
-			<span class="nam">Vindo Dua,</span> MBA from IIPM, hyderabad<br />
-			<span class="nam">Sweta kwatra,</span> MBA from Banasthali Vidyapeeth<br />
-			<span class="nam">Ganpat Apte,</span> M.Com from CCS University<br />
-			<span class="nam">Mohan Agashe,</span> M.Sc. Organic Chemistry<br />
-			<span class="nam">Ankita Jain</span><br />
-			<span class="nam">Minkesh Atyanand</span><br />
-			<span class="nam">Himanshu Kumar </span><br />
-			<span class="nam">Sharavan Aggarwal</span><br />
-			<span class="nam">Soma Nand</span><br />
-			<span class="nam">Swaraj Kamte</span><br />
-        </div>
-      </div> -->
-	  <?php include("internslisting.php"); ?>
+	  	<?php include("internslisting.php"); ?>
 
    	<div style="float:right; width:8px; height:102px; background-image:url(images/bg1-main-right.jpg); background-repeat:repeat-x;"></div>
     </div>
