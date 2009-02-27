@@ -119,4 +119,17 @@ function coursetypes($pid, $select) {
 	}
  }
 
-?>
+
+ function ExpList($selectval="") {
+	for ($i=1; $i <= 10; $i++)
+	 {
+		if ($select==$i) {
+			echo '<option value="'.$i.'" selected="selected" >'.$i.'</option>';
+		} else {
+			echo '<option value="'.$i.'">'.$i.'</option>';
+		}
+	 }
+ }
+
+
+ ?>
