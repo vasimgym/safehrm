@@ -15,7 +15,7 @@ $maxnumber = $maxnres['maxnumber'];
 
 include('header.php');
 ?>
-
+<div style="background-image:url(images/nav-grads-bar.jpg); background-repeat:repeat-x; padding-left:10px; padding-bottom:5px; padding-right:10px; padding-top:5px; width:780px; float:left;">
 	<div align="left" style="text-align:justify; float:left;">
 	<?php if (!empty($_SESSION['clientID'])) { ?>
 	  <div class="navmain">
@@ -284,7 +284,7 @@ include('header.php');
               <td height="20" colspan="4" align="left" valign="top">&nbsp;</td>
             </tr>
 			<tr>
-              <td height="20" colspan="4" align="right" valign="top"><a href="signin.php">Signup/Login to Hire Now  ..</a></td>
+              <td height="20" colspan="4" align="center" valign="top"><a href="signin.php">......Click Here To Hire Now  ......</a></td>
             </tr>
             <tr>
               <td width="140" height="5" align="left" valign="top"></td>
@@ -298,9 +298,7 @@ include('header.php');
 		</div>
 	  	<br /><br /><br /><br />
 		</div>
-  	  </div>
-	  
-	  
-	  
-		</div>   
-  	<?php include('footer.php');?>
+		</div>
+		<?php include('footer.php');?>
+  	  </div>	  
+</div>
