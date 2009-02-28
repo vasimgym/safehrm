@@ -40,10 +40,10 @@ function MM_swapImage() { //v3.0
         </div>
 	  <div style="width:770px; height:240px;"><img src="images/mainimage.jpg" alt="DU_Placements" border="0" usemap="#Map" />
 	<map name="Map" id="Map">
-	  <area shape="rect" coords="17,7,187,137" href="find_internships.html" alt="findinternships" />
-	  <area shape="rect" coords="216,89,359,216" href="#" alt="howitworks" />
-	  <area shape="rect" coords="414,3,546,117" href="#" alt="students" />
-	  <area shape="rect" coords="615,84,793,213" href="#" alt="clients" />
+	  <area shape="rect" coords="17,7,187,137" href="#" alt="findinternships" />
+	  <area shape="rect" coords="216,89,359,216" href="how_it_works.php" alt="howitworks" />
+	  <area shape="rect" coords="414,3,546,117" href="studenthome.php" alt="students" />
+	  <area shape="rect" coords="615,84,793,213" href="clienthome.php" alt="clients" />
 	</map></div>
 	<div style="width:770px; height:102px; background-image:url(images/bg-main-mid.jpg); background-repeat:repeat-x;">
    	  <div style="float:left; width:8px; height:102px; background-image:url(images/bg-main-left.jpg); background-repeat:repeat-x;"></div>
