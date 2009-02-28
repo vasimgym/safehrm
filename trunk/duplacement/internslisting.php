@@ -12,7 +12,7 @@ $res4 = mysql_query($sql2);
 		  	  	$st_id = $iresult['st_id'];	
 					  	
 		  ?>
-		  <a href="viewstudentdetails.php?id=<?php echo $st_id; ?>"><span class="linkze">hire now</span></a><br />
+		  <a href="viewinterndetails.php?id=<?php echo $st_id; ?>"><span class="linkze">hire now</span></a><br />
           <?php } ?>
         </div>
         <div style="width:300px; padding-left:10px; line-height:24px; float:left;">
