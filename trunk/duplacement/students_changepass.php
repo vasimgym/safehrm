@@ -7,22 +7,24 @@ if (empty($_SESSION['stUser'])) {
 }
 $studentid = $_SESSION['stUserID'];
 
-if (!empty($_POST['editcat'])) 
+if (!empty($_POST['editpass'])) 
 {
 	$oldpassword	= trim(stripslashes($_POST['oldpassword']));
 	$newpassword	= trim(stripslashes($_POST['newpassword']));
-		
-	$editsql	= "UPDATE dup_students 
-					   SET		st_pass='$newpassword'
-					   WHERE	st_id='$studentid'";
-		$res = mysql_query($editsql);
-			if (!empty($res)) {
-				triggerMessage("err_student", "Password Changed Successfully");				
-			} else {
-				triggerMessage("err_student", "Password Change Failed");
-			}
+	$repass			= trim(stripslashes($_POST['repassword']));
+	if ($newpassword != $repass) {  triggerMessage("err_student", "Error: New Password does not match!! ");	 }
+	else {		
+		$editsql	= "UPDATE dup_students 
+						   SET		st_pass='$newpassword'
+						   WHERE	st_id='$studentid'";
+			$res = mysql_query($editsql);
+				if (!empty($res)) {
+					triggerMessage("err_student", "Password Changed Successfully");				
+				} else {
+					triggerMessage("err_student", "Password Change Failed");
+				}
+		}
 }
-
 
 include('studentheader.php');
 ?>
@@ -75,6 +77,7 @@ em.error { color: black; }
 	  <div class="blue" style="height:30px; background-image:url(images/nav-bar-table1.jpg); padding-left:10px; padding-right:10px; width:580px; float:left;"></div>
 	  <div style="height:500px; background-image:url(images/nav-grads-bar.jpg); background-repeat:repeat-x; padding-left:15px; padding-bottom:5px; padding-right:10px; padding-top:10px; width:575px; float:left;">
 	<form id="passForm" action="" method="post" >
+	<input type="hidden" name="editpass" value="1" />
 	  <table width="580" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td height="25" align="left" valign="top">&nbsp;</td>

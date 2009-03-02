@@ -23,18 +23,18 @@ if (isset($_POST['slogin'])) {
 
 
 if (isset($_POST['clogin'])) {
-	$st_username   	=  trim(stripslashes($_POST['st_username'])); 
-	$st_pass   		=  trim(stripslashes($_POST['st_pass']));
-	$chksql     	=  "SELECT * FROM dup_students
-								WHERE  st_username='$st_username' AND st_pass='$st_pass' limit 1";
+	$cl_username   	=  trim(stripslashes($_POST['cl_username'])); 
+	$cl_password   	=  trim(stripslashes($_POST['cl_password']));
+	$chksql     	=  "SELECT * FROM dup_clients
+								WHERE  cl_username='$cl_username' AND cl_password='$cl_password' limit 1";
 	$chkres  		=  mysql_query($chksql);
 	$chknuum  		=  mysql_num_rows($chkres);		
 							  
 	if($chknuum > 0) {
 		$chkarray  =  mysql_fetch_array($chkres);
-		$_SESSION['stUser']  	= $chkarray['st_username'];
-		$_SESSION['stUserID'] 	= $chkarray['st_id'];		
-		header('location:studenthome.php');
+		$_SESSION['clUser']  	= $chkarray['cl_username'];
+		$_SESSION['clUserID'] 	= $chkarray['cl_id'];		
+		header('location:clienthome.php');
 	} else {
 		triggerMessage("err_student", "Error: Login failed! Please use correct username and password!");		
 	}
@@ -80,7 +80,7 @@ include('header.php');
       <tr>
       <td height="25" align="left" valign="middle"></td>
       <td height="25" align="left" valign="middle"></td>
-      <td height="25" align="left" valign="middle">Student not registered | <a href="#" class="linkz">Sign Up</a></td>
+      <td height="25" align="left" valign="middle">Student not registered | <a href="students.php" class="linkz">Sign Up</a></td>
       </tr>
       </table>
 	  </form>
@@ -101,12 +101,12 @@ include('header.php');
       <tr>
       <td width="105" height="25" align="left" valign="top"> User Name</td>
       <td width="20" height="25" align="left" valign="top">:</td>
-      <td width="225" height="25" align="left" valign="top"><input name="user_name" type="text" class="form" id="user_name2" /></td>
+      <td width="225" height="25" align="left" valign="top"><input name="cl_username" type="text" class="form" id="cl_username" /></td>
       </tr>
       <tr>
       <td width="105" height="25" align="left" valign="top">Password</td>
       <td width="20" height="25" align="left" valign="top">:</td>
-      <td width="225" height="25" align="left" valign="top"><input name="pass" type="text" class="form" id="pass2" /></td>
+      <td width="225" height="25" align="left" valign="top"><input name="cl_password" type="text" class="form" id="cl_password" /></td>
       </tr>
       <tr>
       <td width="105" height="25" align="left" valign="top"></td>
@@ -118,7 +118,7 @@ include('header.php');
       <tr>
       <td height="25" align="left" valign="middle"></td>
       <td height="25" align="left" valign="middle"></td>
-      <td height="25" align="left" valign="middle">Client not registered | <a href="#" class="linkz">Sign Up</a></td>
+      <td height="25" align="left" valign="middle">Client not registered | <a href="clients.php" class="linkz">Sign Up</a></td>
       </tr>
       </table>
 	  </form>
