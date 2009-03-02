@@ -77,7 +77,7 @@ $().ready(function() {
 
 	<div style="width:300px; float:left; overflow:hidden;">
 	<img src="images/nav-img-search.jpg" alt="searchjobs" style="padding-bottom:15px;" />
-    <form id="SearchForm" method="post" action="find_jobs.php" >
+    <form id="SearchForm" method="post" action="search.php" >
 	  <input type="hidden" name="search" value="1" />
    <table width="300" border="0" cellspacing="0" cellpadding="0">
       <tr>
