@@ -169,7 +169,7 @@ em.error { color: black; }
       <td width="180" height="25" align="left" valign="top"><strong>Upload Photograph </strong></td>
       <td width="40" height="25" align="left" valign="top">:</td>
       <td height="0" align="left" valign="top">
-        <?php if ($selectresult['st_textresume']) { ?><img src="upload/photo/<?php echo $selectresult['st_photo']; ?>" alt="upload" border="0"/> passport size (2 x 2 in) <?php } ?></td>
+        <?php if ($selectresult['st_textresume']) { ?><img src="upload/photo/<?php echo $selectresult['st_photo']; ?>" alt="upload" border="0" height="100" width="100"/> passport size (2 x 2 in) <?php } ?></td>
       <td width="60" align="left" valign="bottom">&nbsp;</td>
       </tr>
       <tr>
