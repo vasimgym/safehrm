@@ -36,7 +36,7 @@ function MM_swapImage() { //v3.0
   <center>
 	<div class="mainbox">
 	  <div style="width:770px; height:250px;">
-	  <div class="logo"><a href="index.html"><img src="images/du-logo.jpg" alt="du-placements" border="0" /></a></div>
+	  <div class="logo"><a href="index.php"><img src="images/du-logo.jpg" alt="du-placements" border="0" /></a></div>
         </div>
 	  <div style="width:770px; height:240px;"><img src="images/mainimage.jpg" alt="DU_Placements" border="0" usemap="#Map" />
 	<map name="Map" id="Map">
