@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (empty($_SESSION['clUserID']))
+{
+	header("location:signin.php");
+}
 include('include/config.php');
 include('include/commonfunctions.php');
 
@@ -11,6 +15,7 @@ foreach($_POST as $key => $val )
 
 if (!empty($_POST['addjob']))
 {
+	$job_cl_id = $_SESSION['clUserID'];
 
 	$sql = " INSERT INTO `dup_jobs` (
 	`job_id` ,
@@ -32,7 +37,7 @@ if (!empty($_POST['addjob']))
 	`job_phone2` ,
 	`job_email`
 	)
-	VALUES ( '' ,'1', '$job_title' ,'$job_description' , '$job_st_requirement' , '$job_highest_education' ,
+	VALUES ( '' ,'$job_cl_id', '$job_title' ,'$job_description' , '$job_st_requirement' , '$job_highest_education' ,
 	'$job_experience' , '$job_industry' ,'$job_function' ,'$job_location' , '$job_salary' , '$job_clientname' ,
 	'$job_contact_person' , '$job_reference_id' ,'$job_address' ,'$job_phone1' ,'$job_phone2' ,'$job_email')";
 	
