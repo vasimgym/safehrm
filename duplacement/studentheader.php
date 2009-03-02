@@ -18,7 +18,7 @@
 		<div class="right"> <img src="images/du-sthome.jpg" alt="contact us" border="0" usemap="#Map" />
         <map name="Map" id="Map2">
         <area shape="rect" coords="103,102,133,115" href="index.php" alt="home" />
-        <area shape="rect" coords="144,102,190,115" href="find_jobs.php" alt="findjobs" />
+        <area shape="rect" coords="144,102,190,115" href="search.php" alt="findjobs" />
         <area shape="rect" coords="200,102,263,128" href="how_it_works.php" alt="aboutus" />
         <area shape="rect" coords="158,4,237,44" href="ask_me.php" alt="contactus"/>
         <area shape="rect" coords="237,4,298,88" href="ask_me.php" alt="contactus" />
