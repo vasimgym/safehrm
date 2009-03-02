@@ -6,8 +6,57 @@ if (empty($_SESSION['stUser'])) {
   	header('location:signin.php');	
 }
 
+$studentid = $_SESSION['stUserID'];
+
+$sql = "select `job_id`, `job_cl_id`, `job_title`, 	`job_description` ,	`job_st_requirement` ,`job_highest_education` ,`job_experience` ,`job_industry` ,	`job_function` ,`job_location` ,`job_salary` ,`job_clientname`,	`job_contact_person` ,`job_reference_id` ,`job_address`,`job_phone1` ,`job_phone2` 	,`job_email` ,
+`name` as `locationname`, `functionname` as  `functionname`
+FROM `dup_jobs` left join `dup_functions` on `functionid` = `job_function` left join `dup_location` on `locationid` = `job_location` ORDER BY RAND() limit 10 ";
+$res = mysql_query($sql);
+
+
+$select = mysql_query("select * from dup_students where st_id='$studentid' ");
+$selectresult = mysql_fetch_array($select);
+
 include('studentheader.php');
 ?>
+
+<script type="text/javascript">
+$.validator.setDefaults({
+	submitHandler: function() { this.submit(); }
+});
+
+$().ready(function() {	
+	$("#SearchForm").validate({
+		rules: {
+			location: {
+				required: true			
+			},
+			industry: {
+				required: true			
+			}
+		},
+		messages: {
+			location: {
+				required: "Please select a location"				
+			},
+			industry: {
+				required: "Please select an industry"				
+			}			
+		}
+	});
+		
+});
+</script>
+
+<style type="text/css">
+#SearchForm .error {
+	width: auto;
+	display:inline;
+	padding-left:15px;
+	color:#FF0000;
+}
+
+</style>
 	<div align="left" style="text-align:justify; float:left; overflow:hidden;">
 		<div class="nav">
         <div class="navbar"> 
@@ -28,7 +77,9 @@ include('studentheader.php');
 
 	<div style="width:300px; float:left; overflow:hidden;">
 	<img src="images/nav-img-search.jpg" alt="searchjobs" style="padding-bottom:15px;" />
-    <table width="300" border="0" cellspacing="0" cellpadding="0">
+    <form id="SearchForm" method="post" action="find_jobs.php" >
+	  <input type="hidden" name="search" value="1" />
+   <table width="300" border="0" cellspacing="0" cellpadding="0">
       <tr>
       <td height="5" align="left" valign="top"></td>
       <td height="5" align="center" valign="top"></td>
@@ -37,45 +88,17 @@ include('studentheader.php');
       <tr>
       <td width="70" height="25" align="left" valign="top">Location</td>
       <td width="20" height="25" align="center" valign="top">:</td>
-      <td width="0" height="25" align="left" valign="top"><input type="text" name="job_title" id="job_title" style="width:196px;"/></td>
+      <td width="0" height="25" align="left" valign="top"><select name="location" class="form" id="location" style="width:172px;">
+        <option value="" selected="selected">-- Location --</option>
+        <?php echo $ops = ListOptions("dup_location", "locationid", "name", $_POST['location']); ?>
+      </select></td>
       </tr>
       <tr>
       <td width="70" height="22" align="left" valign="top">Job Type</td>
       <td width="20" height="22" align="center" valign="top">:</td>
-      <td width="0" height="22" align="left" valign="top"><select name="Work_experience" class="form" id="workexp" style="width:200px;">
-      <option value="0">-- Anything! --</option>
-      <option value="1">Accounting, Auditing &amp; Finance</option>
-      <option value="2">Administration &amp; Clerical</option>
-      <option value="3">Advertising, Marketing &amp; Public Relations</option>
-      <option value="4">Aerospace &amp; Defense</option>
-      <option value="5">Arts, Entertainment &amp; Media</option>
-      <option value="6">Banking &amp; Financial Services</option>
-      <option value="7">Business &amp; Management</option>
-      <option value="8">Business Intelligence &amp; Market Research</option>
-      <option value="9">Community, Social Services &amp; Non profit</option>
-      <option value="10">Construction, Property &amp; Surveying</option>
-      <option value="11">Consultancy</option>
-      <option value="12">Consumer Products &amp; FMCG</option>
-      <option value="13">Creative &amp; Design</option>
-      <option value="14">Education</option>
-      <option value="15">Energy, Utilities &amp; Environmental Services</option>
-      <option value="16">Engineering</option>
-      <option value="17">Hospitality, Travel &amp; Tourism</option>
-      <option value="18">Human Resources</option>
-      <option value="20">Internet, eCommerce &amp; New Media</option>
-      <option value="21">IT &amp; Telecommunications</option>
-      <option value="22">Legal</option>
-      <option value="23">Local Government &amp; Civil Service</option>
-      <option value="24">Logistics, Transport, Purchasing &amp; Supply</option>
-      <option value="25">Management Consultancy</option>
-      <option value="26">Manufacturing</option>
-      <option value="27">Medical &amp; Pharmaceutical</option>
-      <option value="28">Publishing, Journalism &amp; Languages</option>
-      <option value="30">Recruitment</option>
-      <option value="31">Retail, Buying &amp; Merchandising</option>
-      <option value="32">Sales</option>
-      <option value="33">Science &amp; Research</option>
-      <option value="34">Uniformed Services</option>
+      <td width="0" height="22" align="left" valign="top"><select name="industry" class="form" id="industry" style="width:175px;">
+        <option value="" selected="selected" >-- Select Industry --</option>
+        <?php echo $options = ListOptions("dup_industry", "industryid", "industryname", $_POST['industry']); ?>
       </select></td>
       </tr>
       <tr>
@@ -89,36 +112,25 @@ include('studentheader.php');
       <td width="0" height="25" align="left" valign="top"></td>
       </tr>
       </table>
+	  </form>
       </div>
       
 	<div style="width:240px; padding-left:35px; padding-top:5px; float:left; overflow:hidden; line-height:18px;">
 
 	<img src="images/nav-img-job.jpg" alt="searchjobs" style="padding-bottom:15px;" /><br />
 
-    <span class="blue"><strong>Orkash Management</strong></span> (Consulting)<br />
-	Website: www.orkash.com<br />
-	Designation: FMCG<br />
+	 <?php while( $result = mysql_fetch_array($res)) 
+		  {	
+		  	  	$job_id = $result['job_id'];	
+					  	
+	?>
+	 <strong><?php echo $result['job_clientname']; ?></strong>(<?php echo $op = ShowValue("dup_industry", "industryid", "industryname", $result['job_industry']); ?>)<br />
+	Location: <?php echo $result['locationname']; ?><br />
+	Designation: <?php echo $op = ShowValue("dup_industry", "industryid", "industryname", $result['job_function']); ?><br />
 	<a href="#" class="linkz">..apply for job...</a>
     <br /><br />
-    
-    <span class="blue"><strong>Unifruiti</strong></span> (Sales)<br />
-	Website: www.unifruiti.com<br />
-	Designation: Sales manager<br />
-	<a href="#" class="linkz">..apply for job...</a>
-    <br /><br />
-
-    <strong class="blue">9.9 Media</strong><br />
-	Website: www.9dot9.in<br />
-	Work Field: Event management.<br />
-	<a href="#" class="linkz">..apply for job...</a>
-    <br /><br />
-
-    <strong class="blue">Factoring House</strong><br />
-	Website: unavailable<br />
-	Designation: Debt Recovery Agent<br />
-	<a href="#" class="linkz">..apply for job...</a>
-    <br /><br />
-
+    <?php } ?>
+   
     </div>      
     </div>
 	</div>
@@ -132,13 +144,20 @@ include('studentheader.php');
 
 	  <div class="navmaindata">
       <div style="width:340px; height:100px; float:left;"><br />
-      <a href="students_edit_profile.php" class="link">Resume Headline</a><br /><br />
-      <a href="students_update_your_profile.php" class="link">I didn't upload my photograph.</a><br /><br />
-   	  <a href="clients_manage_response.php" class="link">Last Updated CV: 12-Dec-2008</a><br />
+      <a href="students_edit_profile.php?id=<?php echo $studentid; ?>" class="link"><?php echo nl2br($selectresult['st_keyskills']); ?></a><br />
+      <br />
+      
+	  <?php if (!empty($selectresult['st_photo'])) {  ?>
+	  <img src="upload/photo/<?php echo $selectresult['st_photo']; ?>" alt="upload" border="0" height="100" width="100"/><br />
+	  <?php } else { ?>
+	  <a href="students_update_your_profile.php" class="link">I didn't upload my photograph.</a>
+	  <?php } ?>
+      <br />
+   	  <a href="#" class="link">Last Updated CV: <?php echo $selectresult['st_resume_modified']; ?></a><br />
       </div>
 
       <div style="width:200px; height:100px; float:left;"><br />
-      You are not register yet.<br /><br />
+      <!--You are not register yet. --><br /><br />
       <a href="#" class="link">Go for Subscription.</a></div>
 	  </div>		
 	  </div>
