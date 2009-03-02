@@ -54,7 +54,7 @@ include('studentheader.php');
         <td align="left" valign="top">
    		<strong>EMail Id:</strong><br />
    		<?php echo $selectresult['st_email']; ?> </td>
-        <td width="50" align="center" valign="top"><a href="#" class="link">..edit</a></td>
+        <td width="50" align="center" valign="top"><a href="students_personal_profile.php" class="link">..edit</a></td>
         </tr>
       	</table><br /><br />
 	 	</div>
@@ -67,7 +67,7 @@ include('studentheader.php');
         <td width="140" align="left" valign="top">Key Skill</td>
         <td width="20" align="center" valign="top">:</td>
         <td width="0" align="left" valign="top"><?php echo nl2br($selectresult['st_keyskills']); ?></td>
-        <td width="50" align="center" valign="top"><a href="#" class="link">..edit</a></td>
+        <td width="50" align="center" valign="top"><a href="students_edit_profile.php" class="link">..edit</a></td>
         </tr>
         <tr>
         <td width="140" height="5" align="left" valign="top"></td>
@@ -89,7 +89,7 @@ include('studentheader.php');
         <td width="140" height="20" align="left" valign="top"> <strong>Experience <?php echo $k; ?></strong></td>
         <td width="20" height="20" align="center" valign="top">:</td>
         <td width="0" height="20" align="left" valign="top"><?php echo $expresult['ex_duration']; ?></td>
-        <td width="50" align="center" valign="top"><a href="#" class="link">..add</a></td>
+        <td width="50" align="center" valign="top"><a href="students_edit_profile.php" class="link">..add</a></td>
         </tr>
         <tr>
         <td width="140" height="5" align="left" valign="top"></td>
@@ -189,7 +189,7 @@ include('studentheader.php');
               <td width="140" align="left" valign="top">Summery</td>
               <td width="20" align="center" valign="top">:</td>
               <td width="0" align="left" valign="top"><?php echo nl2br($selectresult['st_keyskills']); ?></td>
-              <td width="50" align="center" valign="top"><a href="#" class="link">..edit</a></td>
+              <td width="50" align="center" valign="top"><a href="students_edit_profile.php" class="link">..edit</a></td>
             </tr>
             <tr>
               <td width="140" height="5" align="left" valign="top"></td>
@@ -209,7 +209,7 @@ include('studentheader.php');
               <td width="140" height="20" align="left" valign="top"><strong>Experience <?php echo $k; ?></strong></td>
               <td width="20" height="20" align="center" valign="top">:</td>
               <td width="0" height="20" align="left" valign="top"><?php echo $expresult['ex_duration']; ?></td>
-              <td width="50" align="center" valign="top"><a href="#" class="link">..add</a></td>
+              <td width="50" align="center" valign="top"><a href="students_edit_profile.php" class="link">..add</a></td>
             </tr>
             <tr>
               <td width="140" height="5" align="left" valign="top"></td>

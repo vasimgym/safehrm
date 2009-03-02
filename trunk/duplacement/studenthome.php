@@ -127,7 +127,7 @@ $().ready(function() {
 	 <strong><?php echo $result['job_clientname']; ?></strong>(<?php echo $op = ShowValue("dup_industry", "industryid", "industryname", $result['job_industry']); ?>)<br />
 	Location: <?php echo $result['locationname']; ?><br />
 	Designation: <?php echo $op = ShowValue("dup_industry", "industryid", "industryname", $result['job_function']); ?><br />
-	<a href="#" class="linkz">..apply for job...</a>
+	<a href="viewjobdetails.php?id=<?php echo $job_id; ?>" class="linkz" target="_blank">..apply for job...</a>
     <br /><br />
     <?php } ?>
    
